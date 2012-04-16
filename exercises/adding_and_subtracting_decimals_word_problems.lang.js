@@ -6,7 +6,7 @@
 		"question4"	: '{Op maandag|Afgelopen week} besloten <var>person(1)</var> en <var>person(2)</var> om te kijken wie er sneller kon sprinten over <var>meters</var> meter. Ze vroegen <var>person(3)</var> om hun tijd op te nemen met een stopwatch.',
 		"question5"	: "{Na <var>time_3</var> minuten besloot <var>person(3)</var> om de tijd op te nemen.|} <var>person(1)</var> sprintte eerst en rende <var>meters</var> meter in <var>time_1</var> seconden. Toen het de beurt was aan <var>person(2)</var>, spoot <var>he(2)</var> weg en voltooide de race in <var>time_2</var> seconden.",
 		"question6"	: 'Hoeveel was <var>person(2)</var> sneller dan <var>person(1)</var>?',
-		"question7"	: "{Afgelopen maandag|Op zaterdag} kregen de ouders van <var>person(1)</var> een tweeling, die ze <var>person(2)</var> en <var>person(3)</var> noemden. Bij de geboorte woog <var>person(2)</var> <var>weight_1</var> pond{ en was <var>height_1</var> centimeter lang|}. <var>person(3)</var> woog <var>weight_2</var> pond {en was <var>height_2</var> centimeter lang|}.",
+		"question7"	: "{Afgelopen maandag|Op zaterdag} kregen de ouders van <var>person(1)</var> een tweeling, die ze <var>person(2)</var> en <var>person(3)</var> noemden. Bij de geboorte woog <var>person(2)</var> <var>weight_1</var> gram{ en was <var>height_1</var> centimeter lang|}. <var>person(3)</var> woog <var>weight_2</var> gram {en was <var>height_2</var> centimeter lang|}.",
 		"question8"	: 'Hoeveel wogen de babies samen?',
 		"question9"	: '{Op dinsdag|Afgelopen donderdag|} liep <var>person(1)</var> naar een <var>(store(1))</var> en besloot om een <var>storeItem(1,1)</var> te kopen voor &euro;<var>price_1</var>. <var>person(1)</var> gaf bij de kassa &euro;<var>amount_paid</var> voor <var>his(1)</var> aankoop.',
 		"question10": 'Hoeveel wisselgeld kreeg <var>person(1)</var>?',
@@ -30,7 +30,7 @@
 		"hint7"		: 'Om te weten hoeveel wisselgeld <var>person(1)</var> kreeg, trekken we de prijs van de <var>storeItem(1,1)</var> af van het bedrag dat <var>he(1)</var> betaalde.',
 		"hint8"		: 'Het bedrag dat <var>person(1)</var> betaalde - de prijs van de <var>storeItem(1,1)</var> = het wisselgeld dat <var>person(1)</var> ontving.',
 		"hint9"		: "Om het verschil in neerslag te berekenen, trekken we de hoeveelheid regen in het dorp van <var>person(1)</var>af van de hoeveelheid regen in het dorp van <var>person(2)</var>.",
-		"hint10"	: "Rain in <var>person(2)</var>'s town - rain in <var>person(1)</var>'s town = the difference in rain between the two towns.",
+		"hint10"	: "Regen in het dorp van <var>person(2)</var> - regen in het dorp van <var>person(1)</var> = het verschil in regen tussen de beide dorpen.",
 		"hint11"	: 'Om de afstand te vinden die <var>person(1)</var> aflegde, tellen we de beide afstanden bij elkaar op.',
 		"hint12"	: 'Afstand met de <var>vehicle(1)</var> + afstand met de <var>vehicle(2)</var> = totale afstand.'
 		}
