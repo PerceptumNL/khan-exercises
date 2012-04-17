@@ -5,7 +5,7 @@
 		"question3"	: 'Stel dat de oppervlakte van een vierkant <code>\\color{<var>K_COLOR</var>}{<var>S * S</var>}</code> is. Hoe groot is een zijde?',
 		"question4"	: 'Stel dat de oppervlakte van een vierkant <code>\\color{<var>K_COLOR</var>}{<var>S * S</var>}</code> is. Wat is de omtrek?',
 		"question5" : 'Stel dat de omtrek van een vierkant <code>\\color{<var>P_COLOR</var>}{<var>4 * S</var>}</code> is. Hoe groot is een zijde?',
-		"question6"	: 'De omtrek van een vierkant is <code>P = s + s + s + s = 4s</code>, dus <code>s = P/4</code>.',
+		"question6"	: 'Stel dat de omtrek van een vierkant gelijk is aan <code>\color{<var>P_COLOR</var>}{<var>4 * S</var>}</code>. Wat is dan de lengte van een zijde?',
 		"question7"	: 'Stel dat een rechthoek een lengte van <code>\\color{<var>L_COLOR</var>}{<var>L</var>}</code> en een breedte van <code>\\color{<var>W_COLOR</var>}{<var>W</var>}</code> heeft. Wat is de oppervlakte?',
 		"question8"	: 'Stel dat een rechthoek een lengte van <code>\\color{<var>L_COLOR</var>}{<var>L</var>}</code> en een breedte van <code>\\color{<var>W_COLOR</var>}{<var>W</var>}</code> heeft. Wat is de omtrek?',
 		
