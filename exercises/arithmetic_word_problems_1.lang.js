@@ -64,6 +64,9 @@
 		"hint52"		:	'<var>person(1)</var> deed <var>NUM1</var> <var>plural(exercise(1), NUM1)</var> meer dan <var>person(2)</var> <var>timeofday(1)</var>. '+
 							'<var>person(1)</var> deed <var>plural(TOTAL, exercise(1))</var>.',
 		"hint53"		:	"<code><var>TOTAL</var> - <var>NUM2</var> = <var>NUM1</var></code> <var>plural('auto', NUM1)</var>.",
-		"hint54"		:	"<code><var>NUM1</var> + <var>NUM2</var> = <var>TOTAL</var></code> <var>plural('auto')</var>."
-		}
+		"hint54"		:	"<code><var>NUM1</var> + <var>NUM2</var> = <var>TOTAL</var></code> <var>plural('auto')</var>.",
+		"hint55"		:"<code><var>NUM1</var> + <var>NUM2</var> = <var>TOTAL</var></code> <var>plural('boom')</var>.",
+		"hint56"		: "<code><var>TOTAL</var> - <var>NUM2</var> = <var>NUM1</var></code> <var>plural('boom', NUM1)</var>."
+		
+	}
 })
