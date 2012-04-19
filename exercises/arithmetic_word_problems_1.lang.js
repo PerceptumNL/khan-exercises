@@ -39,7 +39,7 @@
 		"hint32"		: '<var>plural(NUM1, "auto")</var> <var>plural("was", NUM1)</var> geparkeerd op het parkeerterrein van de <var>store(1)</var>. '+
 					'<var>NUM2</var> more <var>plural("auto", NUM2)</var> <var>plural("stonden", "stond", NUM2)</var> bij de <var>store(1)</var>.',
 		"hint33"		: 'Hoeveel auto\'s staan er nu op het parkeerterrein?',
-		"hint34"		: 'Het aantal auto\'s dat nu op hte perkeerterrein staat is het totaal van de auto\'s die aan het begin al op het parkeerterrein stonden en het aantal auto\'s dat erbij is gekomen.',
+		"hint34"		: 'Het aantal auto\'s dat nu op het parkeerterrein staat is het totaal van de auto\'s die aan het begin al op het parkeerterrein stonden en het aantal auto\'s dat erbij is gekomen.',
 		"hint35"		: 'Dat totaal is dus <code><var>NUM1</var> + <var>NUM2</var></code> <var>plural("auto")</var>.',
 		"hint36"		: '<var>person(1)</var> heeft <var>timeofday(1)</var> <var>plural(TOTAL, exercise(1))</var> gedaan. '+
 					'<var>person(2)</var> heeft <var>timeofday(2)</var> <var>plural(NUM2, exercise(1))</var> gedaan. ',
