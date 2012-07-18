@@ -14,7 +14,7 @@
 		"hint8"		: 'De mediaan is dus <code><var>fractionReduce(2 * MEDIAN, 2)</var></code>.',
 		"hint9"		: 'Een andere manier om het middelste getal te vinden is door ze op een getallenlijn te tekenen. Als een getal meerdere keren voorkomt, tel dan alle bijbehorende stippen mee.',
 		"hint10"	: 'De modus is het getal dat het vaakst voorkomt.',
-		"hint11"	: 'Teken een histogram tekenen om te zien hoeveel keer elk nummer voorkomt.',
+		"hint11"	: 'Teken een histogram om te zien hoeveel keer elk nummer voorkomt.',
 		"hint12"	: 'De <code><var>MODE</var></code> komt vaker voor dan elk ander getal, dus <code><var>MODE</var></code> is de modus.'
 		}
 })
