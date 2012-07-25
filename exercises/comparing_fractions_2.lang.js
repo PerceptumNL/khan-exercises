@@ -1,6 +1,6 @@
 ({
 	"nl" : {
-		"question1"	: 'Vul in',
+		"question1"	: 'Kies het juiste teken',
 		
 		"id1"		: 'F1 === 1 ? "blijft" : "wordt"',
 		"id2"		: 'F2 === 1 ? "blijft" : "wordt"',
