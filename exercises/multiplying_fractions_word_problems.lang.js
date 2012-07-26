@@ -24,7 +24,7 @@
 		"hint7"		: 'We kunnen al zien dat <code class="hint_blue">\\dfrac{<var>N</var>}{<var>D</var>}</code> van <code class="hint_orange"><var>AMOUNT</var></code> <code class="hint_green"><var>SOLUTION</var></code> is:',
 		"hint8"		: '<strong><var>person( 1 )</var> heeft €<var>SOLUTION</var>.00 uitgegeven aan boeken.',
 		"hint9"		: 'Om te beantwoorden hoeveel <var>person(1)</var> heeft uitgegeven, moeten we achterhalen wat <code>\\dfrac{<var>N</var>}{<var>D</var>}</code> deel van <code>€<var>AMOUNT</var>.00</code> is.',
-		"hint10"	: 'We kunnen het antwoord op <code>\\dfrac{<var>N</var>}{<var>D</var>}</code> van <code>$<var>AMOUNT</var>.00</code> vinden door <code class="hint_blue">\\dfrac{<var>N</var>}{<var>D</var>}</code> met <code class="hint_orange"><var>AMOUNT</var></code> te vermenigvuldigen.'
+		"hint10"	: 'We kunnen het antwoord op <code>\\dfrac{<var>N</var>}{<var>D</var>}</code> van <code>$<var>AMOUNT</var>.00</code> vinden door <code class="hint_blue">\\dfrac{<var>N</var>}{<var>D</var>}</code> met <code class="hint_orange"><var>AMOUNT</var></code> te vermenigvuldigen.',
 		"hint11"	: 'We kunnen al zien dat <code class="hint_blue">\\dfrac{<var>N</var>}{<var>D</var>}</code> van <code class="hint_orange"><var>AMOUNT</var></code> <code class="hint_green"><var>SOLUTION</var></code> is:',
 		"hint12"	: '<strong><var>person( 1 )</var> heeft €<var>SOLUTION</var>.00 uitgegeven aan geblikt voedsel voor de daklozenopvang',
 		"hint13"	: 'Omdat er een deel van het gas in<var>his( 1 )</var> gastank over was, hoeven we alleen uit te zoeken wat <code>\\dfrac{<var>N</var>}{<var>D</var>}</code> van <code><var>GALLONS</var></code> "Gallons" is om uit te zoeken hoeveel gas er over was in de gastank.',
@@ -36,6 +36,6 @@
 		"hint19"	: 'We kunnen al zien dat <code class="hint_blue">\\dfrac{<var>N</var>}{<var>D</var>}</code> van <code class="hint_orange"><var>ATTENDEES</var></code> <code class="hint_green"><var>SOLUTION</var></code> is:',
 		"hint20"	: 'Er waren <strong><var>SOLUTION</var> volwassenen op de picknick.</strong>',
 		"hint21"	: 'Om te achterhalen hoeveel kopjes chocolade vlokken <var>person(1)</var> nodig heeft, vermenigvuldigen we <code class="hint_blue">\\dfrac{<var>N</var>}{<var>D</var>}</code> kopje met de <code class="hint_orange"><var>BATCHES</var></code> bakplaten.',
-		"hint22"	: 'strong><var>person(1)</var> heeft <var>plural(<var>SOLUTION</var>,"cup")</var> kopjes chocolade vlokken nodig om voldoende koekjes te maken voor de benefietverkoop.</strong>',
+		"hint22"	: 'strong><var>person(1)</var> heeft <var>plural(<var>SOLUTION</var>,"cup")</var> kopjes chocolade vlokken nodig om voldoende koekjes te maken voor de benefietverkoop.</strong>'
 		}
 })
