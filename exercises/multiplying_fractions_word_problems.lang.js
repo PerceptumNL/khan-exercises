@@ -36,6 +36,6 @@
 		"hint19"	: 'We kunnen al zien dat <code class="hint_blue">\\dfrac{<var>N</var>}{<var>D</var>}</code> van <code class="hint_orange"><var>ATTENDEES</var></code> <code class="hint_green"><var>SOLUTION</var></code> is:',
 		"hint20"	: 'Er waren <strong><var>SOLUTION</var> volwassenen op de picknick.</strong>',
 		"hint21"	: 'Om te achterhalen hoeveel kopjes chocolade vlokken <var>person(1)</var> nodig heeft, vermenigvuldigen we <code class="hint_blue">\\dfrac{<var>N</var>}{<var>D</var>}</code> kopje met de <code class="hint_orange"><var>BATCHES</var></code> bakplaten.',
-		"hint22"	: '<strong><var>person(1)</var> heeft <var>plural(<var>SOLUTION</var>,"kopjes")</var> chocolade vlokken nodig om voldoende koekjes te maken voor de benefietverkoop.</strong>'
+		"hint22"	: '<strong><var>person(1)</var> heeft <var>plural(<var>SOLUTION</var>,"kopjes", "kopjes")</var> chocolade vlokken nodig om voldoende koekjes te maken voor de benefietverkoop.</strong>'
 		}
 })
