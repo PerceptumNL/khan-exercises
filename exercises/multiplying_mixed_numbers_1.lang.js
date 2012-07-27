@@ -1,8 +1,8 @@
 ({
 	"nl" : {
-		"question1" : 'Vermenigvuldig en verklein tot de kleinste termen:',
+		"question1" : 'Vermenigvuldig en verklein tot de kleinste termen: <p class="question"><code>\\displaystyle<var>WHOLE_1</var>\\ <var>fraction( NUM_1, DENOM_1, false, true )</var> \\times <var>WHOLE_2</var>\\ <var>fraction( NUM_2, DENOM_2, false, true )</var></code></p><p class="solution" data-type="mixed"><var>(WHOLE_3 + (NUM_3_SIMP/DENOM_3_SIMP))</var></p>',
 		"hint1" : 'Schrijf de gemengde breuken als onechte breuken om het makkelijker te maken om ze te vermenigvuldigen.',
-		"hint2" : '<var>B > 0 ? "Trek" : "Tel"</var> <code><var>abs(B)</var></code> <var>B > 0 ? "af van" : "op bij"</var> beide zijden:',
+		"hint2" : 'Laten we beginnen met de eerste gemengde breuk: Om de teller te vinden, moet je de noemer (<strong><var>DENOM_1</var></strong>) vermenigvuldigen met het gehele getal (<strong><var>WHOLE_1</var></strong>) en de teller (<strong><var>NUM_1</var></strong>) toevoegen. <strong><var>DENOM_1</var></strong>*<strong><var>WHOLE_1</var></strong>+<strong><var>NUM_1</var></strong> = <strong><code><var>I_NUM_1</var></code></strong>.',
 		"hint3" : 'De eerste gemengde breuk kan dus geschreven worden als <code><var>fraction( I_NUM_1, I_DENOM_1, false, true )</var></code>.',
 		"hint4" : 'Maak van de tweede gemengde breuk een onechte breuk: Om de teller te vinden, moet je de noemer (<strong><var>DENOM_2</var></strong>) vermenigvuldigen met het gehele getal (<strong><var>WHOLE_2</var></strong>) en de teller (<strong><var>NUM_2</var></strong>) toevoegen. <strong><var>DENOM_2</var></strong>*<strong><var>WHOLE_2</var></strong>+<strong><var>NUM_2</var></strong> = <strong><code><var>I_NUM_2</var></code></strong>',
 		"hint5" : 'De tweede gemengde breuk kan dus geschreven worden als <code><var>fraction( I_NUM_2, I_DENOM_2, false, true )</var></code>.',
@@ -15,8 +15,3 @@
 		"hint12" : 'De herschreven gemengde breuk is <code>\\color{#28AE7B}{<var>WHOLE_3</var>}\\color{purple}{<var>fraction( NUM_3, DENOM_3, false, true )</var>}.</code>'
 		}
 })
-
-
-					
-					
-			
