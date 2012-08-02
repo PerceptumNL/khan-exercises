@@ -98,6 +98,7 @@ jQuery.extend( KhanUtil, {
 			'rij': 'rijen',
 			'zak': 'zakken',
 			'leerling': 'leerlingen',
+			'stip': 'stippen',
 			'leerkracht': 'leerkrachten',
 			'plank': 'planken',
 			'doos': 'dozen',
@@ -242,7 +243,7 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 	]);
 
 	var exams = KhanUtil.shuffle([
-		"examen",
+		"tussentoets",
 		"toets",
 		"quiz"
 	]);
@@ -391,19 +392,18 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 	]); 
 
 	var clothes = KhanUtil.shuffle([
-		"hoedje",
+		"hoed",
 		"broek",
 		"riem",
 		"ketting",
-		"tasje",
-		"bloesje",
-		"rokje",
-		"horloge",
+		"tas",
+		"rok",
+		"trainingsbroek",
 		"trui",
 		"sweater",
 		"stropdas",
 		"sjaal",
-		"jurkje",
+		"jurk",
 		"jas"
 	]);
 
@@ -438,8 +438,8 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 	]);
 
 	var farmers = KhanUtil.shuffle([
-		{farmer:"tuinder", crops:KhanUtil.shuffle(["tomaat", "aardappel", "wortel", "bonen", "mais"]), field:"land"},
-		{farmer:"kweker", crops:KhanUtil.shuffle(["roos", "tulp", "narcis", "sneeuwklokje", "lelie"]), field:"kas"}
+		{farmer:"tuinder", crops:KhanUtil.shuffle(["tomaat", "aardappel", "wortel", "bonen", "mais"]), fieldss: "het veld", field:"veld"},
+		{farmer:"kweker", crops:KhanUtil.shuffle(["roos", "tulp", "narcis", "sneeuwklokje", "lelie"]), fieldss: "de kas", field:"kas"}
 	]);
 
 	var distances = KhanUtil.shuffle([
@@ -447,10 +447,10 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 	]);
 
 	var distanceActivities = KhanUtil.shuffle([
-		{present:"rijdt", past:"reed", noun:"fiets", done:"heeft gefietst", continuous:"aan het fietsen"},
-		{present:"roeit", past:"roeide", noun:"boot", done:"heeft geroeid", continuous:"aan het roeien"},
-		{present:"rijdt", past:"reed", noun:"auto", done:"heeft gereden", continuous:"aan het rijden"},
-		{present:"loopt", past:"liep", noun:"hond", done:"heeft gelopen", continuous:"aan het lopen"}
+		{present:"rijdt", past:"reed", noun:"fiets", voltooiddeelwoord: "gefietst",werkwoorden: "fietsen", done:"heeft gefietst", voorzetsel: "op", continuous:"aan het fietsen"},
+		{present:"roeit", past:"roeide", noun:"boot", voltooiddeelwoord: "geroeid",werkwoorden: "roeien", done:"heeft geroeid", voorzetsel: "in", continuous:"aan het roeien"},
+		{present:"rijdt", past:"reed", noun:"auto", voltooiddeelwoord: "gereden", werkwoorden: "auto rijden", done:"heeft gereden", voorzetsel: "in", continuous:"aan het rijden"},
+		{present:"loopt", past:"liep", noun:"hond", voltooiddeelwoord: "gelopen", werkwoorden: "lopen", done:"heeft gelopen", voorzetsel: "met", continuous:"aan het lopen"}
 	]);
 
 	var indefiniteArticle = function(word) {
@@ -599,11 +599,23 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 		ride: function( i ) {
 			return distanceActivities[i - 1].present;
 		},
+		
+		toevoeging: function (i) {
+			return distanceActivities[i - 1].voorzetsel;
+		},
 
 		bike: function( i ) {
 			return distanceActivities[i - 1].noun;
 		},
-
+		
+		werkwoord: function (i) {
+			return distanceActivities[i - 1].werkwoorden;
+		},
+	
+		voltooiddlw: function (i) {
+			return distanceActivities[i - 1].voltooiddeelwoord;
+		},
+		
 		biked: function( i ) {
 			return distanceActivities[i - 1].done;
 		},
@@ -620,6 +632,10 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 			return farmers[i - 1].crops[0];
 		},
 
+		fields: function (i) {
+			return farmers[i - 1].fieldss;
+		},
+		
 		field: function( i ) {
 			return farmers[i - 1].field;
 		},
