@@ -28,10 +28,10 @@
 				}
 			}) ];
 		})</var>
-		<var id="LOCATION">randFromArray([ "supermarkt", "kledingwinkel", "dierentuin" ])</var>
+		<var id="LOCATION">randFromArray([ "winkel", "kledingwinkel", "dierentuin" ])</var>
 		<var id="ITEM">
 			{
-				"supermarkt": fruit(1),
+				"winkel": fruit(1),
 				"kledingwinkel": clothing(1),
 				"dierentuin": dier(1)
 			}[ LOCATION ]
@@ -39,8 +39,8 @@
 	</div>
 
 	<div class="problem">
-		<p data-if="LOCATION === 'supermarkt'" class="spin">
-			De inkoper voor een supermarktketen maakte het onderstaande steelbladdiagram om het aantal
+		<p data-if="LOCATION === 'winkel'" class="spin">
+			De inkoper voor een winkelketen maakte het onderstaande steelbladdiagram om het aantal
 			<var>plural( ITEM )</var> in elke winkel aan te geven:
 		</p>
 		<p data-if="LOCATION === 'kledingwinkel'" class="spin">

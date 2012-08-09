@@ -51,7 +51,7 @@
 					</p>
 					<p>
 						Variantie:
-						<span class="sol short" data-type="decimal" data-inexact data-max-error="0.15"><var>sum( SQR_DEV ) / DATA_POINTS</var></span> years<code>^2</code>
+						<span class="sol short" data-type="decimal" data-inexact data-max-error="0.15"><var>sum( SQR_DEV ) / DATA_POINTS</var></span> jaar<code>^2</code>
 					</p>
 					<div class="example">decimals, like <code>7.5</code></div>
 					<div class="example">answers within <code>\pm 0.15</code> are accepted to allow for rounding part-way through</div>
@@ -83,7 +83,7 @@
 						<code>
 								\color{<var>BLUE</var>}{\mu} \quad = \quad
 								\dfrac{<var>plus.apply( KhanUtil, DATA )</var>}{\color{<var>GREEN</var>}{<var>DATA_POINTS</var>}} \quad = \quad
-								\color{<var>BLUE</var>}{<var>MEAN</var>\text{ <var>plural( "year", MEAN )</var> old}}
+								\color{<var>BLUE</var>}{<var>MEAN</var>\text{ <var>plural( "jaar", MEAN )</var> old}}
 						</code>
 					</p>
 
@@ -104,11 +104,11 @@
 						</div>
 						<div class="fake_row" data-each="DATA as i, POINT">
 							<span style="width: 100px;">
-								<code><var>POINT</var></code> <var>plural( "year", POINT )</var>
+								<code><var>POINT</var></code> <var>plural( "jaar", POINT )</var>
 							</span><span style="width: 150px;" class="hint_gray">
-								<code><var>roundTo( 2, POINT - MEAN )</var></code> <var>plural( "year", roundTo( 2, POINT - MEAN ) )</var>
+								<code><var>roundTo( 2, POINT - MEAN )</var></code> <var>plural( "jaar", roundTo( 2, POINT - MEAN ) )</var>
 							</span><span style="width: 150px;" class="hint_purple">
-								<code><var>SQR_DEV[ i ]</var></code> <var>plural( "year", SQR_DEV[ i ] )</var><code>^2</code>
+								<code><var>SQR_DEV[ i ]</var></code> <var>plural( "jaar", SQR_DEV[ i ] )</var><code>^2</code>
 							</span>
 						</div>
 					</div>
@@ -140,12 +140,12 @@
 						<code>
 							\color{red}{\sigma^2} \quad = \quad
 							\dfrac{\color{purple}{<var>roundTo( 2, sum( SQR_DEV ) )</var>}}{\color{<var>GREEN</var>}{<var>DATA_POINTS</var>}} \quad = \quad
-							\color{red}{<var>VARIANCE_POP</var>\text{ <var>plural( "year", VARIANCE_POP )</var>}^2}
+							\color{red}{<var>VARIANCE_POP</var>\text{ <var>plural( "jaar", VARIANCE_POP )</var>}^2}
 						</code>
 					</p>
 
 					<p><strong>
-						De gemiddelde leeftijd van de <var>animal( 1 )</var> in de dierentuin is<var>plural( MEAN, "year" )</var>, en de populatievariantie is <var>plural( VARIANCE_POP, "year" )</var><code>^2</code>.
+						De gemiddelde leeftijd van de <var>animal( 1 )</var> in de dierentuin is<var>plural( MEAN, "jaar" )</var>, en de populatievariantie is <var>plural( VARIANCE_POP, "jaar" )</var><code>^2</code>.
 					</strong></p>
 
 				</div> <!-- hints -->
@@ -174,7 +174,7 @@
 					</p>
 					<p>
 						Variantie:
-						<span class="sol short" data-type="decimal" data-inexact data-max-error="0.15"><var>sum( SQR_DEV ) / ( DATA_POINTS - 1 )</var></span> years<code>^2</code>
+						<span class="sol short" data-type="decimal" data-inexact data-max-error="0.15"><var>sum( SQR_DEV ) / ( DATA_POINTS - 1 )</var></span> jaar<code>^2</code>
 					</p>
 					<div class="example">decimals, like <code>0.75</code></div>
 					<div class="example">answers within <code>\pm 0.15</code> are accepted to allow for rounding part-way through</div>
@@ -208,14 +208,14 @@
 						<code>
 								\color{<var>BLUE</var>}{\overline{x}} \quad = \quad
 								\dfrac{<var>plus.apply( KhanUtil, DATA )</var>}{\color{<var>GREEN</var>}{<var>DATA_POINTS</var>}} \quad = \quad
-								\color{<var>BLUE</var>}{<var>MEAN</var>\text{ <var>plural( "year", MEAN )</var> old}}
+								\color{<var>BLUE</var>}{<var>MEAN</var>\text{ <var>plural( "jaar", MEAN )</var> old}}
 						</code>
 					</p>
 
 					<p>
 					Bereken de <span class="hint_purple"> standaardafwijking van het gemiddelde </span> voor elk <var>animal(1)</var>.
 					Omdat het populatiegemiddelde onbekend is, schatten we het gemiddelde door het <span class="hint_blue">steekproefgemiddelde</span> te gebruiken
-					<code>(\color{<var>BLUE</var>}{\overline{x}} = \color{<var>BLUE</var>}{<var>MEAN</var>\text{ <var>plural( "year", MEAN )</var>}})</code>.
+					<code>(\color{<var>BLUE</var>}{\overline{x}} = \color{<var>BLUE</var>}{<var>MEAN</var>\text{ <var>plural( "jaar", MEAN )</var>}})</code>.
 					</p>
 
 					<div>
@@ -232,11 +232,11 @@
 						</div>
 						<div class="fake_row" data-each="DATA as i, POINT">
 							<span style="width: 100px;">
-								<code><var>POINT</var></code> <var>plural( "year", POINT )</var>
+								<code><var>POINT</var></code> <var>plural( "jaar", POINT )</var>
 							</span><span style="width: 150px;" class="hint_gray">
-								<code><var>roundTo( 2, POINT - MEAN )</var></code> <var>plural( "year", roundTo( 2, POINT - MEAN ) )</var>
+								<code><var>roundTo( 2, POINT - MEAN )</var></code> <var>plural( "jaar", roundTo( 2, POINT - MEAN ) )</var>
 							</span><span style="width: 150px;" class="hint_purple">
-								<code><var>SQR_DEV[ i ]</var></code> <var>plural( "year", SQR_DEV[ i ] )</var><code>^2</code>
+								<code><var>SQR_DEV[ i ]</var></code> <var>plural( "jaar", SQR_DEV[ i ] )</var><code>^2</code>
 							</span>
 						</div>
 					</div>
@@ -276,7 +276,7 @@
 						<code>
 							\color{red}{s^2} \quad = \quad
 							\dfrac{\color{purple}{<var>roundTo( 2, sum( SQR_DEV ) )</var>}}{\color{<var>GREEN</var>}{<var>DATA_POINTS - 1</var>}} \quad = \quad
-							\color{red}{<var>VARIANCE</var>\text{ <var>plural( "year", VARIANCE )</var>}^2}
+							\color{red}{<var>VARIANCE</var>\text{ <var>plural( "jaar", VARIANCE )</var>}^2}
 						</code>
 					</p>
 
