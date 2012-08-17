@@ -89,6 +89,7 @@ jQuery.extend( KhanUtil, {
 			'ketting':'kettingen',
 			'stropdas':'stropdassen',
 			'trui':'truien',
+			'aap':'apen',
 			'kleur': 'kleuren',
 			'krokodil': 'krokodillen',
 			'jas':'jassen',
