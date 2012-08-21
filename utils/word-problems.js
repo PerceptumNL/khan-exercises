@@ -127,6 +127,7 @@ jQuery.extend( KhanUtil, {
 			'plank': 'planken',
 			'hagedis': 'hagedissen',
 			'dierentuin': 'dierentuinen',
+			'nijlpaard': 'nijlpaarden',
 			'supermarkt': 'supermarkten',
 			'doos': 'dozen',
 			'euro': 'euro', 
