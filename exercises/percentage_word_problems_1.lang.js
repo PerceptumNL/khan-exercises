@@ -5,7 +5,7 @@
 		"question3"	: "<var>person(1)</var> heeft vandaag <var>BANK_MORE</var> euro op de bank staan. Gisteren had <var>he(1)</var> <var>BANK_FEWER</var> euro op de bank staan. Met hoeveel procent is het geld op <var>person(1)</var>'s bankrekening verminderd? (Rond je antwoord af op een honderdste van een procent.)",
 		"question4"	: "<var>person(1)</var> heeft vandaag <var>BANK_MORE</var> euro op de bank staan. Gisteren had <var>he(1)</var> <var>BANK_FEWER</var> euro op de bank staan. Met hoeveel procent is het geld op <var>person(1)</var>'s bankrekening verminderd? (Rond je antwoord af op een honderdste van een procent.)",
 		"question5"	: '<var>person(1)</var> heeft <var>YEAR_PERCENT_MORE</var>% meer geld dan <var>he(1)</var> afgelopen jaar had. Als <var>person(1)</var> vandaag <var>YEAR_THIS</var> euro heeft, hoeveel euro had <var>he(1)</var> vorig jaar rond deze tijd? (Rond af op 2 decimalen)',
-		"question6"	: '<b><var>person(1)</var> {heeft {ontbijt|lunch|avondeten}} bij een {restaurant|cafe} en de kosten van <var>his(1)</var> maaltijd zijn €<var>BILL_FORMAT</var>. <var>He(1)</var> wil graag <var>TIP_PERCENT</var>% fooi geven. Wat kost <var>his(1)</var> totale rekening inclusief de fooi?</b>',
+		"question6"	: '<b><var>person(1)</var> {heeft {ontbijt|lunch|avondeten}} bij een {restaurant|cafe} en de kosten van <var>his(1)</var> maaltijd zijn €<var>BILL_FORMAT</var>. <var>He(1)</var> wil graag <var>TIP_PERCENT</var>% fooi geven. Wat is <var>his(1)</var> totale rekening inclusief de fooi?</b>',
 
 		"hint1"		: 'Laat <code>x</code> het aantal zijn waar <var>B_SIMPLE</var> <var>A_SIMPLE</var>% van is.',
 		"hint2"		: 'De bankrekening groeide met <code><var>BANK_MORE</var> - <var>BANK_FEWER</var> = <var>BANK_MORE - BANK_FEWER</var></code> euro ',
