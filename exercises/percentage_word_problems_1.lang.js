@@ -16,7 +16,7 @@
 		"hint7"		: 'Om een fooi van <code>10\\%</code> te berekenen, moet je het decimale punt in <code>€<var>BILL_FORMAT</var></code> een plek naar links verschuiven.',
 		"hint8"		: 'Om een fooi van <code>5\\%</code> te berekenen, deel je de <code>10\\%</code> fooi door de helft.',
 		"hint9"		: 'Om een fooi van <code>20\\%</code> te berekenen, moet je de <code>10\\%</code> fooi met twee vermenigvuldigen.',
-		"hint10"	: 'Wanneer we de twee aantallen bij elkaar tellen, krijgen we <code>\\€<var>TIP_TEN_PERCENT</var> + \\€<var>TIP_FIVE_PERCENT</var> = \\€<var>TIP_AMOUNT_FORMAT</var></code>.',
+		"hint10"	: 'Wanneer we de twee aantallen bij elkaar tellen, krijgen we <code>\€<var>TIP_TEN_PERCENT</var> + \€<var>TIP_FIVE_PERCENT</var> = \€<var>TIP_AMOUNT_FORMAT</var></code>.',
 		"hint11"	: 'De kosten van de maaltijd plus de fooi resulteren in het totale aantal op de rekening.',
 		"hint12"	: 'Het totale aantal op de rekening is <code>€<var>TOTAL_FORMAT</var></code>.'
 		}
