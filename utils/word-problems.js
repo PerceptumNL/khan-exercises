@@ -289,7 +289,8 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 	var electronics = KhanUtil.shuffle([
 		"computer",
 		"DVD speler",
-		"televisie",
+		"televisie"
+	]);
 
 	var binops = KhanUtil.shuffle([
 		"\\barwedge",
