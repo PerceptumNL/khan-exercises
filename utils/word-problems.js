@@ -59,8 +59,10 @@ jQuery.extend( KhanUtil, {
 			'banaan':'bananen',
 			'kokosnoot':'kokosnoten',
 			'zeehond': 'zeehonden',
+			'nijlpaard':'nijlpaarden',
 			'kiwi':'kiwi\'s',
 			'citroen':'citroenen',
+			'hond':'honden',
 			'mango':'mango\'s',
 			'watermeloen':'watermeloenen',
 			'boon':'bonen',
@@ -126,6 +128,7 @@ jQuery.extend( KhanUtil, {
 			'dierentuin': 'dierentuinen',
 			'supermarkt': 'supermarkten',
 			'doos': 'dozen',
+			'aap':'apen',
 			'euro': 'euro', 
 			'lange afstand renner': 'lange afstand renners',
 			'keer':'keer'
@@ -257,6 +260,17 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 		"Biologie"
 	]);
 	
+	var furnitures = KhanUtil.shuffle([
+		"stoel",
+		"kast",
+		"tafel",
+		"bank",
+		"salontafel",
+		"boekenkast",
+		"tafellamp",
+		"wandlamp"
+	]);
+	
 	var lessen = KhanUtil.shuffle([
 		"wiskunde",
 		"scheikunde",
@@ -271,6 +285,11 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 		"toets",
 		"quiz"
 	]);
+	
+	var electronics = KhanUtil.shuffle([
+		"computer",
+		"DVD speler",
+		"televisie",
 
 	var binops = KhanUtil.shuffle([
 		"\\barwedge",
@@ -551,6 +570,7 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 			return collections[i - 1][0];
 		},
 
+	
 		group: function( i ) {
 				return collections[i - 1][1];
 		},
@@ -562,6 +582,10 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 
 		store: function( i ) {
 			return stores[i].name;
+		},
+
+		electronic: function( i ) {
+			return electronics[i];
 		},
 
 		storeItem: function( i, j ) {
@@ -670,6 +694,10 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 
 		shirtStyle: function( i ) {
 			return shirtStyles[i - 1];
+		},
+
+		furniture: function( i ) {
+			return furnitures[i - 1];
 		},
 
 		animal: function( i ) {
