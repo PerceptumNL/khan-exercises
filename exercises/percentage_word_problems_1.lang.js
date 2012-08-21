@@ -12,6 +12,7 @@
 		"hint3"		: 'Het saldo op de bankrekening verminderde met <code><var>BANK_MORE</var> - <var>BANK_FEWER</var> = <var>BANK_MORE - BANK_FEWER</var></code> euro ',
 		"hint4"		: 'Laat <code>x</code> de hoeveelheid geld zijn dat <var>he(1)</var> vorig jaar had.',
 		"hint5"		: 'De hoeveelheid fooi is gelijk aan <code><var>TIP_PERCENT</var>\\% \\times €<var>BILL_FORMAT</var></code>.',
+		"hint6"		: 'We kunnen de fooi bepalen door eerst <code>10\\%</code> fooi en <code>5\\%</code> te berekenen en deze twee getallen bij elkaar op te tellen.',
 		"hint7"		: 'Om een fooi van <code>10\\%</code> te berekenen, moet je het decimale punt in <code>€<var>BILL_FORMAT</var></code> een plek naar links verschuiven.',
 		"hint8"		: 'Om een fooi van <code>5\\%</code> te berekenen, deel je de <code>10\\%</code> fooi door de helft.',
 		"hint9"		: 'Om een fooi van <code>20\\%</code> te berekenen, moet je de <code>10\\%</code> fooi met twee vermenigvuldigen.',
