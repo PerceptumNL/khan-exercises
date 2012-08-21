@@ -2,7 +2,7 @@
 <html data-require="math graphie graphie-helpers graphie-geometry math-format">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Similar Triangles 2</title>
+    <title>Gelijkvormige driehoeken 2</title>
     <script src="../khan-exercise.js"></script>
     <script>
         function triangleAngles( sides ){
@@ -48,22 +48,22 @@
             <var id="ABC_SIDES">randomSides()</var>
             <var id="ABC_ANGLES"> triangleAngles( ABC_SIDES )</var>
 
-            <var id="ANSWERS">[ "DEF", "GHI", "Both", "None" ]</var>
+            <var id="ANSWERS">[ "DEF", "GHI", "Beide", "Geen" ]</var>
             <var id="ANSWER_DISPLAY">{
                 "DEF": "&lt;code&gt;DEF&lt;/code&gt;",
                 "GHI": "&lt;code&gt;GHI&lt;/code&gt;",
-                "Both": "Both",
-                "None": "None"
+                "Beide": "Beide",
+                "Geen": "Geen"
             }</var>
             <var id="ANSWER">ANSWERS[randRange(0, 3)]</var>
 
             <var id="SCALE_DEF">randRange(1, 3)/2</var>
             <var id="SCALE_GHI">randRange(1, 3)/2</var>
 
-            <var id="DEF_SIDES">ANSWER === "DEF" || ANSWER === "Both" ? scaleSides(ABC_SIDES, SCALE_DEF) : randomSides(SCALE_DEF, ABC_SIDES)</var>
-            <var id="DEF_ANGLES"> ANSWER === "DEF" || ANSWER === "Both" ? ABC_ANGLES : triangleAngles(DEF_SIDES)</var>
-            <var id="GHI_SIDES">ANSWER === "GHI" || ANSWER === "Both" ? scaleSides(ABC_SIDES, SCALE_GHI) : randomSides(SCALE_DEF, ABC_SIDES)</var>
-            <var id="GHI_ANGLES"> ANSWER === "GHI" || ANSWER === "Both" ? ABC_ANGLES : triangleAngles(GHI_SIDES)</var>
+            <var id="DEF_SIDES">ANSWER === "DEF" || ANSWER === "Beide" ? scaleSides(ABC_SIDES, SCALE_DEF) : randomSides(SCALE_DEF, ABC_SIDES)</var>
+            <var id="DEF_ANGLES"> ANSWER === "DEF" || ANSWER === "Beide" ? ABC_ANGLES : triangleAngles(DEF_SIDES)</var>
+            <var id="GHI_SIDES">ANSWER === "GHI" || ANSWER === "Beide" ? scaleSides(ABC_SIDES, SCALE_GHI) : randomSides(SCALE_DEF, ABC_SIDES)</var>
+            <var id="GHI_ANGLES"> ANSWER === "GHI" || ANSWER === "Beide" ? ABC_ANGLES : triangleAngles(GHI_SIDES)</var>
 
             <var id="DEF_COMP_1">"\\neq"</var>
             <var id="DEF_COMP_1">ABC_SIDES[2] / DEF_SIDES[2] === ABC_SIDES[0] / DEF_SIDES[0] ? "=" : "\\neq"</var>
@@ -109,7 +109,7 @@
         <div class="problems">
         <div id="similar">
             <div class="problem">
-                Which triangles are similar to triangle <code>ABC</code>?
+                Welke driehoeken zijn gelijkvormig aan driehoek <code>ABC</code>?
             </div>
             <div class="question">
                 <div class="graphie" id="triangles" >
@@ -137,49 +137,49 @@
             <ul class="choices" data-category="true">
                 <li><code>DEF</code></li>
                 <li><code>GHI</code></li>
-                <li>Both</li>
-                <li>None</li>
+                <li>Beide</li>
+                <li>Geen</li>
             </ul>
             <div class="hints">
                 <div>
-                    <p>The sides of similar triangles are always proportional. This is known as </p>
-                    <p><code>\color{orange}{Side-Side-Side (SSS) Similarity}</code>.</p>
+                    <p>De zijden van gelijkvormige driehoeken zijn altijd in verhouding. Dit is bekend als </p>
+                    <p><code>\color{orange}{Zijde-Zijde-Zijde (ZZZ) gelijkvormigheid.}</code>.</p>
                 </div>
-                <p>First, let's determine whether ABC and DEF are similar.</p>
+                <p>Laten we eerst eens kijken of ABC en DEF gelijkvormig zijn.</p>
                 <div>
-                    <p>In triangle <code>DEF</code>, <code>DE = <var>DEF_SIDES[2]</var>, EF = <var>DEF_SIDES[0]</var></code>, and <code>FD = <var>DEF_SIDES[1]</var></code>.</p>
-                    <p>In triangle <code>ABC</code>, <code>AB = <var>ABC_SIDES[2]</var>, BC = <var>ABC_SIDES[0]</var></code>, and <code>CA = <var>ABC_SIDES[1]</var></code>.</p>
+                    <p>In driehoek <code>DEF</code>, <code>DE = <var>DEF_SIDES[2]</var>, EF = <var>DEF_SIDES[0]</var></code>, en <code>FD = <var>DEF_SIDES[1]</var></code>.</p>
+                    <p>In driehoek <code>ABC</code>, <code>AB = <var>ABC_SIDES[2]</var>, BC = <var>ABC_SIDES[0]</var></code>, en <code>CA = <var>ABC_SIDES[1]</var></code>.</p>
                 </div>
                 <div>
-                    <p>In order for <code>ABC</code> and <code>DEF</code> to be similar:</p>
+                    <p>Voorwaarde voor <code>ABC</code> en <code>DEF</code> om gelijkvormig te zijn:</p>
                     <p><code>\dfrac{AB}{\color{blue}{DE}} = \dfrac{BC}{\color{blue}{EF}} = \dfrac{CA}{\color{blue}{FD}}</code></p>
                 </div>
                 <div>
-                    <p>Substitute in the proper values for each side.</p>
+                    <p>Vervang de letters door de waarden.</p>
                     <p><code>\dfrac{<var>ABC_SIDES[2]</var>}{\color{blue}{<var>DEF_SIDES[2]</var>}} <var>DEF_COMP_1</var> \dfrac{<var>ABC_SIDES[0]</var>}{\color{blue}{<var>DEF_SIDES[0]</var>}} <var>DEF_COMP_2</var> \dfrac{<var>ABC_SIDES[1]</var>}{\color{blue}{<var>DEF_SIDES[1]</var>}}</code></p>
                 </div>
-                <p>Since <span data-if="ANSWER === 'GHI' || ANSWER === 'None'">not</span> all the proportions are equal, <code>ABC</code> is <span data-if="ANSWER === 'GHI' || ANSWER === 'None'">not</span> similar to <code>DEF</code></span>.</p>
+                <p> Omdat <span data-if="ANSWER === 'GHI' || ANSWER === 'None'">niet</span> alle verhoudingen gelijk zijn is <code>ABC</code> <span data-if="ANSWER === 'GHI' || ANSWER === 'None'">niet</span> gelijkvormig aan <code>DEF</code></span>.</p>
 
                 <p>Next, let's determine whether <code>ABC</code> and <code>GHI</code> are similar.</p>
                 <div>
-                    <p>In triangle <code>GHI</code>, <code>DE = <var>GHI_SIDES[2]</var>, EF = <var>GHI_SIDES[0]</var></code>, and <code>FD = <var>GHI_SIDES[1]</var></code>.</p>
-                    <p>In triangle <code>ABC</code>, <code>AB = <var>ABC_SIDES[2]</var>, BC = <var>ABC_SIDES[0]</var></code>, and <code>CA = <var>ABC_SIDES[1]</var></code>.</p>
+                    <p>In driehoek <code>GHI</code>, <code>DE = <var>GHI_SIDES[2]</var>, EF = <var>GHI_SIDES[0]</var></code>, en <code>FD = <var>GHI_SIDES[1]</var></code>.</p>
+                    <p>In driehoek <code>ABC</code>, <code>AB = <var>ABC_SIDES[2]</var>, BC = <var>ABC_SIDES[0]</var></code>, en <code>CA = <var>ABC_SIDES[1]</var></code>.</p>
                 </div>
                 <div>
-                    <p>For triangles <code>ABC</code> and <code>GHI</code> to be similar:</p>
+                    <p>Om driehoeken <code>ABC</code> en <code>GHI</code> gelijkvormig te laten zijn:</p>
                     <p><code>\dfrac{AB}{\color{red}{GH}} = \dfrac{BC}{\color{red}{EF}} = \dfrac{CA}{\color{red}{FD}}</code></p>
                 </div>
                 <div>
-                    <p>Substitute in the proper values for each side.</p>
+                    <p>Vervang de letters door de waarden.</p>
                     <p><code>\dfrac{<var>ABC_SIDES[2]</var>}{\color{red}{<var>GHI_SIDES[2]</var>}} <var>GHI_COMP_1</var> \dfrac{<var>ABC_SIDES[0]</var>}{\color{red}{<var>GHI_SIDES[0]</var>}} <var>GHI_COMP_2</var> \dfrac{<var>ABC_SIDES[1]</var>}{\color{red}{<var>GHI_SIDES[1]</var>}}</code></p>
                 </div>
-                <p>Since <span data-if="ANSWER === 'DEF' || ANSWER === 'None'">not</span> all the proportions are equal, <code>ABC</code> is <span data-if="ANSWER === 'DEF' || ANSWER === 'None'">not</span> similar to <code>GHI</code></span>.</p>
+                <p>Omdat <span data-if="ANSWER === 'DEF' || ANSWER === 'None'">niet</span> alle verhoudingen gelijk zijn is <code>ABC</code> is <span data-if="ANSWER === 'DEF' || ANSWER === 'None'">niet</span> gelijkvormig aan <code>GHI</code></span>.</p>
 
                 <div class="final_answer">
-                    <p data-if="ANSWER === 'DEF'"><code>DEF</code> is similar to <code>ABC</code></p>
-                    <p data-if="ANSWER === 'GHI'"><code>GHI</code> is similar to <code>ABC</code></p>
-                    <p data-if="ANSWER === 'Both'"><code>DEF</code> and <code>GHI</code> are similar to <code>ABC</code></p>
-                    <p data-else>Neither <code>DEF</code> nor <code>GHI</code> are similar to <code>ABC</code></p>
+                    <p data-if="ANSWER === 'DEF'"><code>DEF</code> is gelijkvormig aan <code>ABC</code></p>
+                    <p data-if="ANSWER === 'GHI'"><code>GHI</code> is gelijkvormig aan <code>ABC</code></p>
+                    <p data-if="ANSWER === 'Beide'"><code>DEF</code> en <code>GHI</code> zijn gelijkvormig aan <code>ABC</code></p>
+                    <p data-else><code>DEF</code> noch <code>GHI</code> zijn gelijkvormig aan <code>ABC</code></p>
                 </div>
 
             </div>
