@@ -32,7 +32,7 @@ jQuery.extend( KhanUtil, {
 			return '2';
 		}
 		else if( angle == 90 ){
-			return 'undefined';
+			return 'onbepaald';
 		}
 		return 'undef';
 	},
@@ -77,7 +77,7 @@ tan: {name: "tan", print: function( angle ){
 		return '\\sqrt 3';
 	}
 	else if( angle == 90 ){
-		return 'undefined';
+		return 'onbepaald';
 	}
 	return 'undef';
 
@@ -143,7 +143,7 @@ sin: {name: "sin", print: function( angle ){
 	else if( angle == 90 ){
 		return '1';
 	}
-	return 'undefined';
+	return 'onbepaald';
 },
 convertsTo: ["cos","csc"],
 convertTo: function( type, angle ){
