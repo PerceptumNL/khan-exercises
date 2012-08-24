@@ -130,6 +130,7 @@ jQuery.extend( KhanUtil, {
 			'nijlpaard': 'nijlpaarden',
 			'supermarkt': 'supermarkten',
 			'doos': 'dozen',
+			'baby': 'baby\'s',
 			'euro': 'euro', 
 			'lange afstand renner': 'lange afstand renners',
 			'keer':'keer'
