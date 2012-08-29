@@ -87,6 +87,9 @@ jQuery.extend( KhanUtil, {
 			'persoon':'personen',
 			'zebra': 'zebra\'s',
 			'beer': 'beren',
+			'uur': 'uren',
+			'minuut': 'minuten',
+			'week': 'weken',
 			'les': 'lessen',
 			'auto':'auto\'s',
 			'boom':'bomen',
@@ -127,10 +130,9 @@ jQuery.extend( KhanUtil, {
 			'plank': 'planken',
 			'hagedis': 'hagedissen',
 			'dierentuin': 'dierentuinen',
-			'nijlpaard': 'nijlpaarden',
 			'supermarkt': 'supermarkten',
 			'doos': 'dozen',
-			'baby': 'baby\'s',
+			'nijlpaard':'nijlpaarden',
 			'euro': 'euro', 
 			'lange afstand renner': 'lange afstand renners',
 			'keer':'keer'
@@ -475,6 +477,16 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 		"kilometer"
 	]);
 
+	var transportActivities = KhanUtil.shuffle([
+		{voertuig:"fiets", ww:"fietste", voorz:"op"},
+		{voertuig:"auto", ww:"reed",voorz:"in"},
+		{voertuig:"tram", ww:"reisde",voorz:"met"},
+		{voertuig:"motor", ww:"reed",voorz:"op"},
+		{voertuig:"scooter", ww:"reed",voorz:"op"},
+		{voertuig:"trein", ww:"reisde",voorz:"met"},
+		{voertuig:"bus", ww:"reisde",voorz:"met"}
+	]);
+
 	var distanceActivities = KhanUtil.shuffle([
 		{present:"rijdt", past:"reed", noun:"fiets", voltooiddeelwoord: "gefietst",werkwoorden: "fietsen", done:"heeft gefietst", voorzetsel: "op", continuous:"aan het fietsen"},
 		{present:"roeit", past:"roeide", noun:"boot", voltooiddeelwoord: "geroeid",werkwoorden: "roeien", done:"heeft geroeid", voorzetsel: "in", continuous:"aan het roeien"},
@@ -631,6 +643,18 @@ jQuery.fn[ "word-problemsLoad" ] = function() {
 
 		toevoeging: function (i) {
 			return distanceActivities[i - 1].voorzetsel;
+		},
+		
+		voertuigen: function(i) {
+			return transportActivities[i-1].voertuig;
+		},
+		
+		transportww: function(i) {
+			return transportActivities[i-1].ww;
+		},
+		
+		voorzet: function(i) {
+			return transportActivities[i-1].voorz;
 		},
 
 		bike: function( i ) {
