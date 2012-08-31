@@ -61,6 +61,7 @@ jQuery.extend( KhanUtil, {
 			'zeehond': 'zeehonden',
 			'kiwi':'kiwi\'s',
 			'citroen':'citroenen',
+			'vaardigheid':'vaardigheden',
 			'mango':'mango\'s',
 			'watermeloen':'watermeloenen',
 			'boon':'bonen',
