@@ -2,7 +2,7 @@
 <html data-translatable data-require="math graphie graphie-helpers graphie-geometry math-format">
 <head>
 	<meta charset="UTF-8" />
-	<title>Quadrilateral Angles</title>
+	<title> Vierhoeken </title>
 	<script src="../khan-exercise.js"></script>
 	<script>
 	
@@ -26,8 +26,7 @@
 					</var>
 				</div>
 				<div data-tt="problem1" class="problem">
-					What is the value of the angle marked with "x" ? 
-				</div>
+					Hoe groot is de met "x" aangegeven hoek ?				</div>
 				<div class="question">
 					<div class="graphie">
 						init({
@@ -44,8 +43,8 @@
 				</div>
 				<div class="solution"><var>ANGLES[ ANSWER_POS ]</var></div>
 				<div class="hints">
-					<p data-tt="hint1" >This figure is a trapezoid.</p>
-					<p data-tt="hint2" >The angles of a trapezoid side are supplementary.</p>
+					<p data-tt="hint1" >Dit figuur is een trapezium.</p>
+					<p data-tt="hint2" >De hoeken van de schuine zijden van een trapezium zijn elkaars supplement.</p>
 					<p><code><var>ANGLES[ SHOWN_POS ]</var> + x = 180</code></p>
 					<p><code>x = 180 - <var>ANGLES[ SHOWN_POS ]</var></code></p>
 					<p><code>x =  <var>ANGLES[ ANSWER_POS ]</var></code></p>	
@@ -63,9 +62,9 @@
 				</div>
 	
 				<div class="hints">
-					<p data-tt="hint3" >This figure is an isosceles trapezoid.</p>
-					<p data-tt="hint4" >The angles of bases of an isosceles trapezoid are equal.</p>
-					<p data-tt="hint5" >Therefore, the angle x is also <code><var>ANGLES[ SHOWN_POS ]</var></code></p>
+					<p data-tt="hint3" >Dit figuur is een gelijkbenig trapezium.</p>
+					<p data-tt="hint4" >De basishoeken van een gelijkbenig trapezium zijn gelijk.</p>
+					<p data-tt="hint5" >Daarom is hoek x ook <code><var>ANGLES[ SHOWN_POS ]</var></code></p>
 				</div>
 			</div>
 			<div id="parallelogram1" data-type="trapezoid">
@@ -74,9 +73,9 @@
 					<var id="SHOWN_POS">( ANSWER_POS + 2 ) % 4</var>	
 				</div>
 				<div class="hints">
-					<p data-tt="hint6" >This quadrilateral is a parallelogram.</p>
-					<p data-tt="hint7" >Opposite angles of a parallelogram are equal.</p>
-					<p data-tt="hint8" >Therefore, the angle x is also <code><var>ANGLES[ SHOWN_POS ]</var></code></p>
+					<p data-tt="hint6" >Deze vierhoek is een paralellogram.</p>
+					<p data-tt="hint7" >Overstaande hoeken van een paralellogram zijn gelijk.</p>
+					<p data-tt="hint8" >Daarom is hoek x ook  <code><var>ANGLES[ SHOWN_POS ]</var></code></p>
 				</div>
 			</div>	
 			<div id="parallelogram2" data-type="trapezoid">
@@ -85,8 +84,8 @@
 					<var id="SHOWN_POS">ANSWER_POS % 2 == 0 ? ( ANSWER_POS + 1 ) : ( ANSWER_POS - 1 )</var>	
 				</div>
 				<div class="hints">
-					<p data-tt="hint9" >This quadrilateral is a parallelogram.</p>
-					<p data-tt="hint10" >Adjacent angles of a parallelogram are supplementary.</p>
+					<p data-tt="hint9" >Deze vierhoek is een paralellogram.</p>
+					<p data-tt="hint10" >Aangrenzende hoeken van een paralellogram zijn elkaars supplement.</p>
 					<p><code><var>ANGLES[ SHOWN_POS ]</var> + x = 180</code></p>
 					<p><code>x = 180 - <var>ANGLES[ SHOWN_POS ]</var></code></p>
 					<p><code>x =  <var>ANGLES[ ANSWER_POS ]</var></code></p>	
@@ -111,9 +110,9 @@
 					</div>
 				</div>
 				<div class="hints">
-					<p data-tt="hint11" >This quadrilateral is a rhombus, because it has all sides equal.</p>
-					<p data-tt="hint12" >Opposite angles of a rhombus are equal.</p>
-					<p data-tt="hint13" >Therefore, the angle x is also <code><var>ANGLES[ SHOWN_POS ]</var></code></p>
+					<p data-tt="hint11" >Deze vierhoek is een ruit, omdat alle zijden gelijk zijn.</p>
+					<p data-tt="hint12" >Overstaande hoeken van een ruit zijn gelijk.</p>
+					<p data-tt="hint13" >Daarom is hoek x ook <code><var>ANGLES[ SHOWN_POS ]</var></code></p>
 				</div>
 			</div>
 			<div id="rhombus2" data-type="rhombus1">
@@ -122,8 +121,8 @@
 					<var id="SHOWN_POS">ANSWER_POS % 2 == 0 ? ( ANSWER_POS + 1 ) : ( ANSWER_POS - 1 )</var>	
 				</div>
 				<div class="hints">
-					<p data-tt="hint14" >This quadrilateral is a rhombus, because it has all sides equal.</p>
-					<p data-tt="hint15" >Adjacent angles of a rhombus are supplementary.</p>
+					<p data-tt="hint14" >Deze vierhoek is een ruit, omdat alle zijden gelijk zijn.</p>
+					<p data-tt="hint15" >Aangrenzende hoeken van een ruit zijn elkaars supplement.</p>
 					<p><code><var>ANGLES[ SHOWN_POS ]</var> + x = 180</code></p>
 					<p><code>x = 180 - <var>ANGLES[ SHOWN_POS ]</var></code></p>
 					<p><code>x =  <var>ANGLES[ ANSWER_POS ]</var></code></p>	
@@ -136,9 +135,9 @@
 					<var id="SHOWN_POS">( ANSWER_POS + 2 ) % 4</var>	
 				</div>
 				<div class="hints">
-					<p data-tt="hint16" >This quadrilateral is a kite, because it has two pairs of adjacent sides equal.</p>
-					<p data-tt="hint17" >Angles between the non-equal sides of a kite are equal.</p>
-					<p data-tt="hint18" >Therefore, the angle x is also <code><var>ANGLES[ SHOWN_POS ]</var></code></p>
+					<p data-tt="hint16" >Deze vierhoek is een vlieger omdat het twee paar gelijke aangrenzende zijden heeft.</p>
+					<p data-tt="hint17" >De hoeken tussen de ongelijke zijden van een vlieger zijn gelijk.</p>
+					<p data-tt="hint18" >Daarom is hoek x ook <code><var>ANGLES[ SHOWN_POS ]</var></code></p>
 				</div>
 			</div>
 		</div>
