@@ -23,7 +23,7 @@
 		"hint2"		: 'Ze aten <code>\\dfrac{<var>A + B</var>}{<var>TOTAL</var>}</code> van de <var>pizza( 1 )</var>.',
 		"hint3"		: 'Omdat ze <var>A + B</var> stukken <var>pizza( 1 )</var> aten en er <var>plural( LEFT, "stuk","stukken" )</var> overbleven, moeten er aan het begin <var>TOTAL</var> stukken zijn geweest.',
 		"hint6"		: 'Als <var>plural( A, "stuk","stukken")</var> gelijk is aan <code>\\dfrac{<var>A</var>}{<var>TOTAL</var>}</code> van de <var>pizza( 1 )</var>, dan moeten er totaal <var>TOTAL</var> stukken zijn geweest.',
-		"hint7"     : '<code>\\text{gedeelte van <var>pizza( 1 )</var> opgegeten} = \\dfrac{\\text{aantal opgegeten stukken}}{\\text{totaal aantal stukken}}</code>',
+		"hint7"     	: '<code>\\text{gedeelte van <var>pizza( 1 )</var> opgegeten} = \\dfrac{\\text{aantal opgegeten stukken}}{\\text{totaal aantal stukken}}</code>',
 		"hint9"		: 'Samen aten ze <var>A + B</var> stukken, zodat er <var>LEFT</var> van de <var>TOTAL</var> stukken overbleven.',
 		"hint10"	: '<code>\\dfrac{<var>LEFT</var>}{<var>TOTAL</var>}</code> van de <var>pizza( 1 )</var> blijft over.',
 		
