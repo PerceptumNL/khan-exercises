@@ -2,7 +2,7 @@
 <html data-translatable data-require="math math-format graphie word-problems">
 <head>
 	<meta charset="UTF-8" />
-	<title>Interpreting linear equations</title>
+	<title>Interpreteren van lineaire vergelijkingen</title>
 	<script src="../khan-exercise.js"></script>
 </head>
 <body>
@@ -15,13 +15,13 @@
 					<var id="M">1 / randRange( 2, 5 )</var>
 					<var id="B">randRange( 1, 3 )</var>
 					<var id="UNIT">[ deskItem( 0 ), fruit( 0 ), "X" ][ INDEX ]</var>
-					<var data-tt="var1" id="X_AXIS_LABEL">[ "# of " + plural( UNIT ), "# of " + plural( UNIT ), "X" ][ INDEX ]</var>
-					<var data-tt="var2" id="Y_AXIS_LABEL">[ "Price of " + plural( UNIT ), "Price of " + plural( UNIT ), "Y" ][ INDEX ]</var>
-					<var data-tt="var3" id="X_AXIS_QUESTION">[ "the number of " + plural( UNIT ), "the number of " + plural( UNIT ), "X" ][ INDEX ]</var>
-					<var data-tt="var4" id="Y_AXIS_QUESTION">[ "the price of " + plural( UNIT ), "the price of " + plural( UNIT ), "Y" ][ INDEX ]</var>
+					<var data-tt="var1" id="X_AXIS_LABEL">[ "aantal " + plural( UNIT ), "aantal " + plural( UNIT ), "X" ][ INDEX ]</var>
+					<var data-tt="var2" id="Y_AXIS_LABEL">[ "Prijs van " + plural( UNIT ), "Prijs van " + plural( UNIT ), "Y" ][ INDEX ]</var>
+					<var data-tt="var3" id="X_AXIS_QUESTION">[ "het aantal " + plural( UNIT ), "het aantal " + plural( UNIT ), "X" ][ INDEX ]</var>
+					<var data-tt="var4" id="Y_AXIS_QUESTION">[ "de prijs van " + plural( UNIT ), "de prijs van " + plural( UNIT ), "Y" ][ INDEX ]</var>
 				</div>
 				<div class="question">
-					<p data-tt="question1" ><b>How does <var>Y_AXIS_QUESTION</var> change as <var>X_AXIS_QUESTION</var> increases?</b></p>
+					<p data-tt="question1" ><b>Hoe verandert <var>Y_AXIS_QUESTION</var> als <var>X_AXIS_QUESTION</var> toeneemt?</b></p>
 					<div class="graphie" id="grid">
 						init({
 							range: [[-3, 10], [-1, 10]],
@@ -62,11 +62,11 @@
 					</div>
 				</div>
 
-				<div  data-tt="solution1" class="solution">Increases</div>
+				<div  data-tt="solution1" class="solution">Neemt toe</div>
 				<ul class="choices" data-category="true">
-					<li data-tt="list1" >Increases</li>
-					<li data-tt="list2" >Decreases</li>
-					<li data-tt="list3" >Stays the same</li>
+					<li data-tt="list1" >Neemt toe</li>
+					<li data-tt="list2" >Neemt af</li>
+					<li data-tt="list3" >Blijft gelijk</li>
 				</ul>
 				<div class="hints">
 					<div>
@@ -76,10 +76,10 @@
 							style({ stroke: "#40a020" });
 							line( [ 7, 4 * M + B ], [ 7, 7 * M + B ] );
 						</div>
-						<p data-tt="hint1" >Looking at the graph, we see that as <code>x</code> increases (<code>\color{#000000}{\text{black arrow}}</code>), <code>y</code> also increases (<code>\color{#40a020}{\text{green arrow}}</code>).</p>
+						<p data-tt="hint1" >Als we naar de grafiek kijken, zien we dat als <code>x</code> toeneemt, (<code>\color{#000000}{\text{black arrow}}</code>), <code>y</code> ook toeneemt. (<code>\color{#40a020}{\text{groene pijl}}</code>).</p>
 					</div>
-					<p data-tt="hint2" >We can say that the slope of the line is positive, or that the variables have a direct relationship.</p>
-					<p data-tt="hint3" >Thus, as <var>X_AXIS_QUESTION</var> increases, <var>Y_AXIS_QUESTION</var> also <b>increases</b>.</p>
+					<p data-tt="hint2" >We kunnen concluderen dat de richtingscoëfficient positief is, of dat de variabelen positief aan elkaar gecorreleerd zijn.</p>
+					<p data-tt="hint3" >Dus, als <var>X_AXIS_QUESTION</var> toeneemt, neemt <var>Y_AXIS_QUESTION</var> ook <b>toe</b>.</p>
 				</div>
 			</div>
 			<div id="decrease" data-type="increase" data-weight="3">
@@ -87,7 +87,7 @@
 					<var id="M">1 / randRange( 2, 5 ) * -1</var>
 					<var id="B">randRange( 6, 8 )</var>
 				</div>
-				<div  data-tt="solution2" class="solution">Decreases</div>
+				<div  data-tt="solution2" class="solution">Neemt af</div>
 				<div class="hints">
 					<div>
 						<div class="graphie" data-update="grid">
@@ -96,10 +96,17 @@
 							style({ stroke: "#ff0000" });
 							line( [ 7, 4 * M + B ], [ 7, 7 * M + B ] );
 						</div>
-						<p data-tt="hint4" >Looking at the graph, we see that as <code>x</code> increases (<code>\color{#000000}{\text{black arrow}}</code>), <code>y</code> decreases (<code>\color{#ff0000}{\text{red arrow}}</code>).</p>
+<<<<<<< HEAD
+						<p data-tt="hint4" >Wanneer we naar de grafiek kijken, zie we dat wanneer <code>x</code> toeneemt (<code>\color{#000000}{\text{zwarte pijl}}</code>), <code>y</code> afneemt (<code>\color{#ff0000}{\text{rode pijl}}</code>).</p>
 					</div>
-					<p data-tt="hint5" >We can say that the slope of the line is negative, or that the variables have an inverse relationship.</p>
-					<p data-tt="hint6" >Thus, as <var>X_AXIS_QUESTION</var> increases, <var>Y_AXIS_QUESTION</var> <b>decreases</b>.</p>
+					<p data-tt="hint5" >We kunnen concluderen dat de richtingscoëfficient negatief is, of dat de variabelen negatief aan elkaar gecorreleerd zijn.</p>
+					<p data-tt="hint6" >Dus, als <var>X_AXIS_QUESTION</var> toeneemt, <b>daalt </b><var>Y_AXIS_QUESTION</var> .</p>
+=======
+						<p data-tt="hint4" >Wanneer we naar de grafiek kijken, zie we dat <code>x</code> toeneemt (<code>\color{#000000}{\text{zwarte pijl}}</code>), <code>y</code> afneemt (<code>\color{#ff0000}{\text{rode pijl}}</code>).</p>
+					</div>
+					<p data-tt="hint5" >We kunnen concluderen dat de richtingscoëfficient negatief is, of dat de variabelen negatief aan elkaar gecorreleerd zijn.</p>
+					<p data-tt="hint6" >Dus, als <var>X_AXIS_QUESTION</var> toeneemt, <b>daalt</b><var>Y_AXIS_QUESTION</var> .</p>
+>>>>>>> a45030ca6589deb7d391d6458b2bb8ccff9b46cd
 				</div>
 			</div>
 			<div id="stays" data-type="increase" data-weight="1">
@@ -107,11 +114,11 @@
 					<var id="M">0</var>
 					<var id="B">randRange( 2, 8 )</var>
 				</div>
-				<div data-tt="solution3" class="solution">Stays the same</div>
+				<div data-tt="solution3" class="solution">Blijft gelijk</div>
 				<div class="hints">
-					<p data-tt="hint7" >Looking at the graph, we see that as <code>x</code> increases, there is no change in <code>y</code>.</p>
-					<p data-tt="hint8" >We can say that the slope of the line is zero, or that the variables have no correlation.</p>
-					<p data-tt="hint9" >Thus, as <var>X_AXIS_QUESTION</var> increases, <var>Y_AXIS_QUESTION</var> <b>stays the same</b>.</p>
+					<p data-tt="hint7" >Wanneer we naar de grafiek kijken, zien we dat wanneer <code>x</code> toeneemt, <code>y</code> gelijk blijft.</p>
+					<p data-tt="hint8" >We kunnen concluderen dat de richtingscoëfficient nul is, of dat er geen correlatie tussen de variablen bestaat.</p>
+					<p data-tt="hint9" >Dus, als <var>X_AXIS_QUESTION</var> toeneemt, blijft <var>Y_AXIS_QUESTION</var> <b>gelijk</b>.</p>
 				</div>
 			</div>
 		</div>

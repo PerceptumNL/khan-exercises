@@ -13,12 +13,20 @@ MathJax.Hub.Config({
 			"boldsymbol.js"
 		],
 		Macros: {
-			RR: "\\mathbb{R}"
+			RR: "\\mathbb{R}",
+			blue: "\\color{#6495ED}",
+			orange: "\\color{#FFA500}",
+			pink: "\\color{#FF00AF}",
+			red: "\\color{red}",
+			green: "\\color{#28AE7B}",
+			gray: "\\color{gray}",
+			purple: "\\color{purple}"
 		},
 		Augment: {
 			Definitions: {
 				macros: {
 					lrsplit: "LRSplit",
+					cancel: "Cancel",
 					lcm: ["NamedOp", 0]
 				}
 			},
@@ -33,6 +41,9 @@ MathJax.Hub.Config({
 						frac.denomalign = MathJax.ElementJax.mml.ALIGN.RIGHT;
 						frac.linethickness = "0em";
 						this.Push( frac );
+					},
+					Cancel: function( name ) {
+						this.Push( MathJax.ElementJax.mml.menclose( this.ParseArg( name ) ).With({ notation: MathJax.ElementJax.mml.NOTATION.UPDIAGONALSTRIKE }) );
 					}
 				}
 			}
@@ -62,7 +73,7 @@ MathJax.Ajax.timeout = 60 * 1000;
 MathJax.Ajax.loadError = (function( oldLoadError ) {
 	return function( file ) {
 		Khan.warnTimeout();
-		// Otherwise will receive unresponsive script error when finally finish loading 
+		// Otherwise will receive unresponsive script error when finally finish loading
 		MathJax.Ajax.loadComplete = function( file ) { };
 		oldLoadError.call( this, file );
 	};
@@ -84,7 +95,7 @@ MathJax.Message.Init = (function( oldInit ) {
 				}
 			}
 		}
-		
+
 		oldInit.call( this, styles );
 	};
 })( MathJax.Message.Init );
