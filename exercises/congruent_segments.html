@@ -15,7 +15,7 @@
         <div>
             <div class="vars">
                 <var id="SOLUTION">random() &lt; 0.5 ? "Ja" : "Nee"</var>
-                <div data-ensure="( SOLUTION === 'Ja' && POINTS[ 1 ] - POINTS[ 0 ] === POINTS[ 3 ] - POINTS[ 2 ] ) || ( SOLUTION === 'Nee' && POINTS[ 1 ] - POINTS[ 0 ] !== POINTS[ 3 ] - POINTS[ 2 ] )">
+                <div data-ensure="( SOLUTION === 'Ja' &amp;&amp; POINTS[ 1 ] - POINTS[ 0 ] === POINTS[ 3 ] - POINTS[ 2 ] ) || ( SOLUTION === 'Nee' &amp;&amp; POINTS[ 1 ] - POINTS[ 0 ] !== POINTS[ 3 ] - POINTS[ 2 ] )">
                     <var id="POINTS">sortNumbers( randRangeUnique( -5, 5, 4 ) )</var>
                 </div>
                 <var id="COLORS">[ BLUE, GREEN, PINK, ORANGE ]</var>
@@ -72,11 +72,11 @@
                     <span class="lcol"><code>AB = <var>POINTS[ 1 ] - POINTS[ 0 ]</var></code></span>
                     <span class="rcol"><code>CD = <var>POINTS[ 3 ] - POINTS[ 2 ]</var></code></span>
                 </p>
-                <div data-if="SOLUTION === 'Ja'" data-unwrap>
+                <div data-if="SOLUTION === 'Ja'" data-unwrap="data-unwrap">
                     <p><code>AB = CD</code></p>
                     <p class="final_answer">Ja, <code>\overline{AB}</code> en <code>\overline{CD}</code> zijn gelijk.</p>
                 </div>
-                <div data-else data-unwrap>
+                <div data-else="data-else" data-unwrap="data-unwrap">
                     <p><code>AB \neq CD</code></p>
                     <p class="final_answer">Nee, <code>\overline{AB}</code> en <code>\overline{CD}</code> zijn niet gelijk.</p>
                 </div>

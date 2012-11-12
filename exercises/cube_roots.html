@@ -72,21 +72,21 @@
                 <div class="hints" data-apply="appendContents">
                     <p>We zoeken de derdemachtswortel van <code><var>Q</var></code>, dus we willen de factoren in drie gelijke groepen splitsen.</p>
 
-                    <div data-if="PRIMES.length === 3" data-unwrap>
+                    <div data-if="PRIMES.length === 3" data-unwrap="data-unwrap">
 
                         <p>We hebben maar drie factoren en we willen splitsen in drie factoren, dus dat is eenvoudig.</p>
                         <p><code><var>Q</var> = <var>PRIMES.join( "\\times " )</var></code>, dus <code><var>N</var>^3 = <var>Q</var></code>.</p>
 
-                    </div><div data-else data-unwrap>
+                    </div><div data-else="data-else" data-unwrap="data-unwrap">
 
                         <div>
                             <p>Merk op dat we de factoren kunnen herschrijven tot:</p>
                             <p><code><var>Q</var> = <var>PRIMES.join( "\\times " )</var> = \left(<var>[ F_N.join( "\\times " ), F_N.join( "\\times " ), F_N.join( "\\times ") ].join( "\\right)\\times\\left(" )</var>\right)</code><p>
-                        </div>
+                        </p></p></div>
 
-                        <p data-if="F_N.length > 1">
+                        <p data-if="data-if" f_n.length="F_N.length"> 1"
                             Dus <code>\left(<var>F_N.join( "\\times " )</var>\right)^3 = <var>N</var>^3 = <var>Q</var></code>.
-                        </p><p data-else>
+                        </p><p data-else="data-else">
                             Dus <code><var>N</var>^3 = <var>Q</var></code>.
                         </p>
 

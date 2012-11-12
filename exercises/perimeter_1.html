@@ -104,11 +104,11 @@
         </div>
 
         <div id="triangle" data-weight="2">
-            <div class="vars" data-ensure="A < B + C && B < A + C && C < A + B">
+            <div class="vars" data-ensure="data-ensure" a="A"><b c="C" b="B"><a c="C"><a b="B">
                 <var id="A,B,C">randRange(2, 9, 3)</var>
                 <var id="X">((A * A + B * B - C * C) / (2 * A * B)) * B</var>
                 <var id="Y">sqrt(B * B - X * X)</var>
-            </div>
+            </a></a></b></div>
 
             <p class="question">
                 Hoe groot is de omtrek van de driehoek?
@@ -224,13 +224,7 @@
             <div class="vars">
                 <var id="WIDTH">randRange(5, 10)</var>
                 <var id="HEIGHT">randRange(5, 10)</var>
-                <var id="SHAPE"
-                    data-ensure="SHAPE.numSides <= 10 && SHAPE.numSides > 4">
-                    createOddShape({
-                        width: WIDTH,
-                        height: HEIGHT
-                    })
-                </var>
+                <var id="SHAPE" data-ensure="data-ensure" shape.numsides="SHAPE.numSides"></var>
                 <var id="SIDES">SHAPE.sides</var>
             </div>
 

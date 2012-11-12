@@ -112,7 +112,7 @@
                 Welke driehoeken zijn gelijkvormig aan driehoek <code>ABC</code>?
             </div>
             <div class="question">
-                <div class="graphie" id="triangles" >
+                <div class="graphie" id="triangles">
                     init({
                         range: [ [-1, 13 ], [ -14, 2.5 ] ]
                     })
@@ -158,7 +158,7 @@
                     <p>Vervang de letters door de waarden.</p>
                     <p><code>\dfrac{<var>ABC_SIDES[2]</var>}{\color{blue}{<var>DEF_SIDES[2]</var>}} <var>DEF_COMP_1</var> \dfrac{<var>ABC_SIDES[0]</var>}{\color{blue}{<var>DEF_SIDES[0]</var>}} <var>DEF_COMP_2</var> \dfrac{<var>ABC_SIDES[1]</var>}{\color{blue}{<var>DEF_SIDES[1]</var>}}</code></p>
                 </div>
-                <p> Omdat <span data-if="ANSWER === 'GHI' || ANSWER === 'None'">niet</span> alle verhoudingen gelijk zijn is <code>ABC</code> <span data-if="ANSWER === 'GHI' || ANSWER === 'None'">niet</span> gelijkvormig aan <code>DEF</code></span>.</p>
+                <p> Omdat <span data-if="ANSWER === 'GHI' || ANSWER === 'None'">niet</span> alle verhoudingen gelijk zijn is <code>ABC</code> <span data-if="ANSWER === 'GHI' || ANSWER === 'None'">niet</span> gelijkvormig aan <code>DEF</code>.</p>
 
                 <p>Laat we nu kijken of <code>ABC</code> en <code>GHI</code> gelijkvormig zijn.</p>
                 <div>
@@ -173,13 +173,13 @@
                     <p>Vervang de letters door de waarden.</p>
                     <p><code>\dfrac{<var>ABC_SIDES[2]</var>}{\color{red}{<var>GHI_SIDES[2]</var>}} <var>GHI_COMP_1</var> \dfrac{<var>ABC_SIDES[0]</var>}{\color{red}{<var>GHI_SIDES[0]</var>}} <var>GHI_COMP_2</var> \dfrac{<var>ABC_SIDES[1]</var>}{\color{red}{<var>GHI_SIDES[1]</var>}}</code></p>
                 </div>
-                <p>Omdat <span data-if="ANSWER === 'DEF' || ANSWER === 'None'">niet</span> alle verhoudingen gelijk zijn is <code>ABC</code> <span data-if="ANSWER === 'DEF' || ANSWER === 'None'">niet</span> gelijkvormig aan <code>GHI</code></span>.</p>
+                <p>Omdat <span data-if="ANSWER === 'DEF' || ANSWER === 'None'">niet</span> alle verhoudingen gelijk zijn is <code>ABC</code> <span data-if="ANSWER === 'DEF' || ANSWER === 'None'">niet</span> gelijkvormig aan <code>GHI</code>.</p>
 
                 <div class="final_answer">
                     <p data-if="ANSWER === 'DEF'"><code>DEF</code> is gelijkvormig aan <code>ABC</code></p>
                     <p data-if="ANSWER === 'GHI'"><code>GHI</code> is gelijkvormig aan <code>ABC</code></p>
                     <p data-if="ANSWER === 'Beide'"><code>DEF</code> en <code>GHI</code> zijn gelijkvormig aan <code>ABC</code></p>
-                    <p data-else><code>DEF</code> noch <code>GHI</code> zijn gelijkvormig aan <code>ABC</code></p>
+                    <p data-else="data-else"><code>DEF</code> noch <code>GHI</code> zijn gelijkvormig aan <code>ABC</code></p>
                 </div>
 
             </div>

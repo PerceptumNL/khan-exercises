@@ -72,21 +72,21 @@
                 <div class="hints" data-apply="appendContents">
                     <p>We zoeken de vierkantswortel van <code><var>Q</var></code>, dus we willen de priemfactoren splitsen in 2 gelijke groepen.</p>
 
-                    <div data-if="PRIMES.length === 2" data-unwrap>
+                    <div data-if="PRIMES.length === 2" data-unwrap="data-unwrap">
 
                         <p>We hebben maar 2 factoren en die willen we verdelen in 2 groepen, dus dat is eenvoudig.</p>
                         <p><code><var>Q</var> = <var>PRIMES.join( "\\times " )</var></code>, dus <code><var>N</var>^2 = <var>Q</var></code>.</p>
 
-                    </div><div data-else data-unwrap>
+                    </div><div data-else="data-else" data-unwrap="data-unwrap">
 
                         <div>
                             <p>We kunnen de factoren opnieuw opstellen op deze manier:</p>
-                            <p><code><var>Q</var> = <var>PRIMES.join(" &times; ")</var> = \left(<var>F_N.join( "\\times " )</var>\right) \times \left(<var>F_N.join(" &times; ")</var>\right)</code></p>
+                            <p><code><var>Q</var> = <var>PRIMES.join(" × ")</var> = \left(<var>F_N.join( "\\times " )</var>\right) \times \left(<var>F_N.join(" × ")</var>\right)</code></p>
                         </div>
 
-                        <p data-if="F_N.length > 1">
+                        <p data-if="data-if" f_n.length="F_N.length"> 1"
                             Dus <code>\left(<var>F_N.join( "\\times " )</var>\right)^2 = <var>N</var>^2 = <var>Q</var></code>.
-                        </p><p data-else>
+                        </p><p data-else="data-else">
                             Dus <code><var>N</var>^2 = <var>Q</var></code>.
                         </p>
 

@@ -16,9 +16,9 @@
                 <var id="TOTAL_MARKUP">roundTo(2,(MARKUP_RATE/100)*WHOLESALE).toFixed(2)</var>
             </div>
             <div class="question spin">
-                <p><var>person(1)</var>'s Meubel Winkel koopt een stoel met een inkoopprijs van &euro;<var>WHOLESALE</var>.  
+                <p><var>person(1)</var>'s Meubel Winkel koopt een stoel met een inkoopprijs van €<var>WHOLESALE</var>.  
                 Als het winstpercentage bij <var>person(1)</var>'s Meubel Winkel <var>MARKUP_RATE</var>% is, wat is dan de winst op de stoel in Euro's?
-            </div>
+            </p></div>
             <p class="solution" data-forms="dollar"><var>TOTAL_MARKUP</var></p>
             <div class="hints">
                 <div>
@@ -28,13 +28,13 @@
                 <div>
                     <p>Omdat de winstmarge een percentage is moeten we die eerst omzetten in een decimaal getal. Procent betekent honderdste deel, dus <code class="hint_blue"><var>MARKUP_RATE</var>\%</code> is gelijk aan <code class="hint_blue">\displaystyle\frac{<var>MARKUP_RATE</var>}{100}</code> wat ook gelijk is aan <code class="hint_blue"><var>MARKUP_RATE</var> \div 100</code>.</p>
                     <p><code class="hint_blue"><var>MARKUP_RATE</var> \div 100 = <var>(MARKUP_RATE/100).toFixed(2)</var></code>
-                </div>
+                </p></div>
                 <div>
                     <p>Nu weet je alles wat nodig is om bovenstaande formule te gebruiken!</p>
                 </div>
                 <div>
-                    <p><code class="hint_blue"><var>(MARKUP_RATE/100).toFixed(2)</var></code> <code>\times</code> <code class="hint_green">&euro;<var>WHOLESALE</var></code> <code>=</code> <code class="hint_pink">&euro;<var>TOTAL_MARKUP</var></code></p>
-                    <p class="final_answer">De hoeveelheid winst op de stoel is <code class="hint_pink">&euro;<var>TOTAL_MARKUP</var></code>.</p>
+                    <p><code class="hint_blue"><var>(MARKUP_RATE/100).toFixed(2)</var></code> <code>\times</code> <code class="hint_green">€<var>WHOLESALE</var></code> <code>=</code> <code class="hint_pink">€<var>TOTAL_MARKUP</var></code></p>
+                    <p class="final_answer">De hoeveelheid winst op de stoel is <code class="hint_pink">€<var>TOTAL_MARKUP</var></code>.</p>
                 </div>
             </div>
         </div>
@@ -48,8 +48,8 @@
             </div>
             <div class="question spin">
                 <p>De manager van <var>person(1)</var>'s Meubel Winkel probeert uit te rekenen hoeveel hij kan berekenen voor een stoel die net is binnengekomen. 
-                Als de stoel was gekocht voor een inkoopprijs van &euro;<var>WHOLESALE</var> en <var>person(1)</var> heeft een winstmarge op alle meubels van <var>MARKUP_RATE</var>%, voor welke prijs zou de manager de stoel moeten verkopen?
-            </div>
+                Als de stoel was gekocht voor een inkoopprijs van €<var>WHOLESALE</var> en <var>person(1)</var> heeft een winstmarge op alle meubels van <var>MARKUP_RATE</var>%, voor welke prijs zou de manager de stoel moeten verkopen?
+            </p></div>
             <p class="solution" data-forms="dollar"><var>RETAIL_PRICE</var></p>
             <div class="hints">
                 <div>
@@ -59,18 +59,18 @@
                 <div>
                     <p>Omdat de winstmarge een percentage is moeten we die eerst omzetten in een decimaal getal. Procent betekent honderdste deel, dus  <code class="hint_blue"><var>MARKUP_RATE</var>\%</code> is gelijk aan <code class="hint_blue">\displaystyle\frac{<var>MARKUP_RATE</var>}{100}</code> wat ook gelijk is aan <code class="hint_blue"><var>MARKUP_RATE</var> \div 100</code>.</p>
                     <p><code class="hint_blue"><var>MARKUP_RATE</var> \div 100 = <var>(MARKUP_RATE/100).toFixed(2)</var></code>
-                </div>
+                </p></div>
                 <div>
                     <p>Nu heb je alles om de winst te berekenen!</p>
-                    <p><code class="hint_blue"><var>(MARKUP_RATE/100).toFixed(2)</var></code> <code>\times</code> <code class="hint_green">&euro;<var>WHOLESALE.toFixed(2)</var></code> <code>=</code> <code class="hint_purple">&euro;<var>TOTAL_MARKUP</var></code></p>
+                    <p><code class="hint_blue"><var>(MARKUP_RATE/100).toFixed(2)</var></code> <code>\times</code> <code class="hint_green">€<var>WHOLESALE.toFixed(2)</var></code> <code>=</code> <code class="hint_purple">€<var>TOTAL_MARKUP</var></code></p>
                 </div>
                 <div>
                     <p>Omdat de winstmarge een percentage is van de inkoopprijs kunnen we de verkoopprijs vinden met de volgende berekening:</p>
                     <p><span class="hint_purple">winst</span> <code>+</code> <span class="hint_green">inkoopprijs</span> <code>=</code> <span class="hint_pink">verkoopprijs</span></p>
                 </div>
                 <div>
-                    <p><code class="hint_purple">&euro;<var>TOTAL_MARKUP</var></code> <code>+</code> <code class="hint_green">&euro;<var>WHOLESALE.toFixed(2)</var></code> <code>=</code> <code class="hint_pink">&euro;<var>RETAIL_PRICE.toFixed(2)</var></code></p>
-                    <p class="final_answer">De verkoopprijs van de stoel zou <code class="hint_pink">&euro;<var>RETAIL_PRICE.toFixed(2)</var></code> moeten zijn.</p>
+                    <p><code class="hint_purple">€<var>TOTAL_MARKUP</var></code> <code>+</code> <code class="hint_green">€<var>WHOLESALE.toFixed(2)</var></code> <code>=</code> <code class="hint_pink">€<var>RETAIL_PRICE.toFixed(2)</var></code></p>
+                    <p class="final_answer">De verkoopprijs van de stoel zou <code class="hint_pink">€<var>RETAIL_PRICE.toFixed(2)</var></code> moeten zijn.</p>
                 </div>
             </div>
         </div>
@@ -82,7 +82,7 @@
                 <var id="TOTAL_COMMISSION">roundTo(2,(COMMISSION_RATE/100)*PRICE).toFixed(2)</var>
             </div>
             <div class="question spin">
-                <p><var>person(1)</var> werkt vlakbij in een electronica winkel. <var>He(1)</var> krijgt een provisie van <var>COMMISSION_RATE</var>% op alles wat <var>he(1)</var> verkoopt. Als <var>he(1)</var> een computer verkoopt voor &euro;<var>PRICE</var>, hoeveel geld is dan de provisie van <var>person(1)</var>?</p>
+                <p><var>person(1)</var> werkt vlakbij in een electronica winkel. <var>He(1)</var> krijgt een provisie van <var>COMMISSION_RATE</var>% op alles wat <var>he(1)</var> verkoopt. Als <var>he(1)</var> een computer verkoopt voor €<var>PRICE</var>, hoeveel geld is dan de provisie van <var>person(1)</var>?</p>
             </div>
             <p class="solution" data-forms="dollar"><var>TOTAL_COMMISSION</var></p>
                 <div class="hints">
@@ -93,13 +93,13 @@
                 <div>
                     <p>Omdat de provisie een percentage is moeten we dit eerst omzetten in een decimaal getal. rocent betekent honderdste deel, dus <code class="hint_blue"><var>COMMISSION_RATE</var>\%</code> is gelijk aan <code class="hint_blue">\displaystyle\frac{<var>COMMISSION_RATE</var>}{100}</code> wat ook gelijk is aan <code class="hint_blue"><var>COMMISSION_RATE</var> \div 100</code>.</p>
                     <p><code class="hint_blue"><var>COMMISSION_RATE</var> \div 100 = <var>(COMMISSION_RATE/100).toFixed(2)</var></code>
-                </div>
+                </p></div>
                 <div>
                     <p>Nu weet je alles wat nodig is om bovenstaande formule te gebruiken!</p>
                 </div>
                 <div>
-                    <p><code class="hint_blue"><var>(COMMISSION_RATE/100).toFixed(2)</var></code> <code>\times</code> <code class="hint_green">&euro;<var>PRICE</var></code> <code>=</code> <code class="hint_pink">$<var>TOTAL_COMMISSION</var></code></p>
-                    <p class="final_answer">De hoeveelheid provisie die <var>person(1)</var> krijgt door een computer te verkopen is <code class="hint_pink">&euro;<var>TOTAL_COMMISSION</var></code>.</p>
+                    <p><code class="hint_blue"><var>(COMMISSION_RATE/100).toFixed(2)</var></code> <code>\times</code> <code class="hint_green">€<var>PRICE</var></code> <code>=</code> <code class="hint_pink">$<var>TOTAL_COMMISSION</var></code></p>
+                    <p class="final_answer">De hoeveelheid provisie die <var>person(1)</var> krijgt door een computer te verkopen is <code class="hint_pink">€<var>TOTAL_COMMISSION</var></code>.</p>
                 </div>
                 </div>
         </div>
@@ -114,7 +114,7 @@
 
             </div>
             <div class="question spin">
-                <p><var>person(1)</var> verdient een basissalaris van &euro;<var>BASE_SALARY</var> per week met een toeslag van <var>COMMISSION_RATE</var>% provisie op alles wat <var>he(1)</var> verkoopt. Als <var>person(1)</var> de afgelopen week &euro;<var>SALES</var> aan goederen heeft verkocht, hoe groot was dan <var>his(1)</var> totale salaris?</p>
+                <p><var>person(1)</var> verdient een basissalaris van €<var>BASE_SALARY</var> per week met een toeslag van <var>COMMISSION_RATE</var>% provisie op alles wat <var>he(1)</var> verkoopt. Als <var>person(1)</var> de afgelopen week €<var>SALES</var> aan goederen heeft verkocht, hoe groot was dan <var>his(1)</var> totale salaris?</p>
             </div>
             <p class="solution" data-forms="dollar"><var>TOTAL_SALARY</var></p>
                 <div class="hints">
@@ -125,18 +125,18 @@
                 <div>
                     <p>Omdat de provisie een percentage is moeten we dit eerst omzetten in een decimaal getal. Percentage betekent honderdste deel, dus <code class="hint_blue"><var>COMMISSION_RATE</var>\%</code> is gelijk aan <code class="hint_blue">\displaystyle\frac{<var>COMMISSION_RATE</var>}{100}</code> wat ook gelijk is aan <code class="hint_blue"><var>COMMISSION_RATE</var> \div 100</code>.</p>
                     <p><code class="hint_blue"><var>COMMISSION_RATE</var> \div 100 = <var>(COMMISSION_RATE/100).toFixed(2)</var></code>
-                </div>
+                </p></div>
                 <div>
                     <p>Nu weet je alles om de hoeveelheid provisie te berekenen:</p>
-                    <p><code class="hint_blue"><var>(COMMISSION_RATE/100).toFixed(2)</var></code> <code>\times</code> <code class="hint_green">&euro;<var>SALES.toFixed(2)</var></code> <code>=</code> <code class="hint_purple">&euro;<var>TOTAL_COMMISSION</var></code></p>
+                    <p><code class="hint_blue"><var>(COMMISSION_RATE/100).toFixed(2)</var></code> <code>\times</code> <code class="hint_green">€<var>SALES.toFixed(2)</var></code> <code>=</code> <code class="hint_purple">€<var>TOTAL_COMMISSION</var></code></p>
                 </div>
                 <div>
                     <p>Door de hoeveelheid provisie bij het basis salaris op te tellen weten we het totale salaris.</p>
                     <p><span class="hint_purple">Hoeveelheid provisie</span> <code>+</code> <span class="hint_gray">basis salaris</span> <code>=</code> <span class="hint_pink">totale salaris</span></p>
                 </div>
                 <div>
-                    <p><code class="hint_purple">&euro;<var>TOTAL_COMMISSION</var></code> <code>+</code> <code class="hint_gray">&euro;<var>BASE_SALARY.toFixed(2)</var></code> <code>=</code> <code class="hint_pink">&euro;<var>TOTAL_SALARY.toFixed(2)</var></code></p>
-                    <p class="final_answer">Het totale salaris van <var>person(1)</var> was de afgelopen week dus <code class="hint_pink">&euro;<var>TOTAL_SALARY.toFixed(2)</var></code>.</p>
+                    <p><code class="hint_purple">€<var>TOTAL_COMMISSION</var></code> <code>+</code> <code class="hint_gray">€<var>BASE_SALARY.toFixed(2)</var></code> <code>=</code> <code class="hint_pink">€<var>TOTAL_SALARY.toFixed(2)</var></code></p>
+                    <p class="final_answer">Het totale salaris van <var>person(1)</var> was de afgelopen week dus <code class="hint_pink">€<var>TOTAL_SALARY.toFixed(2)</var></code>.</p>
                 </div>
 
                 </div>
