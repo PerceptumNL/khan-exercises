@@ -11,7 +11,7 @@
             <div id="set-hands" data-weight="3">
 
                 <div class="vars">
-                    <div data-ensure="!(HOUR === 1 &amp;&amp; MINUTE === 0)">
+                    <div data-ensure="!(HOUR === 1 && MINUTE === 0)">
                         <var id="HOUR">randRange(1, 12)</var>
                         <var id="MINUTE_INCREMENT">15</var>
                         <var id="MINUTE">randRange(0, (60 / MINUTE_INCREMENT) - 1) * MINUTE_INCREMENT</var>
@@ -234,10 +234,10 @@
 
                 <div class="hints">
                     <p>
-                        De <span class="hint_blue" style="font-weight: bold;">uren</span> wijzer is de korte
-                        <span class="hint_blue" style="font-weight: bold;">blauwe</span> wijzer en de
-                        <span class="hint_orange" style="font-weight: bold;">minuten</span> wijzer is de lange
-                        <span class="hint_orange" style="font-weight: bold;">oranje</span> wijzer.
+                        De <span class="hint_blue" style="font-weight: bold">uren</span> wijzer is de korte
+                        <span class="hint_blue" style="font-weight: bold">blauwe</span> wijzer en de
+                        <span class="hint_orange" style="font-weight: bold">minuten</span> wijzer is de lange
+                        <span class="hint_orange" style="font-weight: bold">oranje</span> wijzer.
                     </p>
 
                     <p>
@@ -246,7 +246,7 @@
                     </p>
 
                     <p>
-                        Eerst zetten we de wijzer voor de <span class="hint_orange" style="font-weight: bold;">minuten</span> goed.
+                        Eerst zetten we de wijzer voor de <span class="hint_orange" style="font-weight: bold">minuten</span> goed.
                     </p>
 
                     <div>
@@ -259,7 +259,7 @@
                                 the minute hand should be at the mark numbered
                                 <code class="hint_orange">12</code>, which is the first tick mark on the clock
                                 and represents <code>0</code> minutes past the hour
-                            </span><span data-else="data-else">
+                            </span><span data-else>
                                 en elk streepje voor 5 minuten staat, moet de minutenwijzer op
                                 <code class="hint_orange"><var>fraction(MINUTE, 5)</var> = <var>MINUTE/5</var></code> staan
                             </span>.
@@ -267,7 +267,7 @@
                     </div>
 
                     <p>
-                        Vervolgens zetten we de <span class="hint_blue" style="font-weight: bold;">uren</span> wijzer goed.
+                        Vervolgens zetten we de <span class="hint_blue" style="font-weight: bold">uren</span> wijzer goed.
                     </p>
 
                     <div>
@@ -281,12 +281,12 @@
                         <p data-if="MINUTE_IS_ZERO">
                             Omdat er sprake is van <code>0</code> minuten over het uur, wijst de urenwijzer precies naar het juiste uur.
                         </p>
-                        <div data-else="data-else" data-unwrap="data-unwrap">
+                        <div data-else data-unwrap>
                             <p>
                                 Omdat er sprake is van <code><var>MINUTE</var></code> minuten over het uur, heeft de urenwijzer 
-                                <code class="hint_blue"><var>fraction(MINUTE, 60)</var> =
+								<code class="hint_blue"><var>fraction(MINUTE, 60)</var> =
                                 <var>fraction(MINUTE, 60, false, true)</var></code> afgelegd van de
-                                <code><span data-if="HOUR + 1 ===13">1</span><span data-else="data-else"><var>HOUR + 1</var></span>
+                                <code><span data-if="HOUR + 1 ===13">1</span><span data-else><var>HOUR + 1</var></span>
                                 </code> uren wijzer.
                             </p>
                             <p>
@@ -295,7 +295,7 @@
                                 </span><span data-else-if="MINUTE === 40">net voorbij 3
                                 </span><span data-else-if="MINUTE === 15">net voorbij 1
                                 </span><span data-else-if="MINUTE === 30">tussen 2 en 3
-                                </span><span data-else="data-else">net voor 4 </span>
+                                </span><span data-else>net voor 4 </span>
                                 streepjes van 5 minuten voorbij de <code class="hint_blue"><var>HOUR</var></code> uren wijzer.
                             </p>
                         </div>

@@ -11,7 +11,8 @@
         <var id="FACTOR">0</var>
         <!-- ensure equal probability of yes or no -->
         <var id="DIVISIBLE">randFromArray([true, false])</var>
-        <var id="NUMBER" data-ensure="!DIVISIBLE ^ (NUMBER % FACTOR === 0)">
+        <var id="NUMBER"
+            data-ensure="!DIVISIBLE ^ (NUMBER % FACTOR === 0)">
             randRange(10000, 1000000)
         </var>
     </div>
@@ -38,7 +39,7 @@
                 <p class="final_answer" data-if="DIVISIBLE">
                     <code><var>NUMBER</var></code> is een even getal dus het is deelbaar door <code>2</code>.
                 </p>
-                <p class="final_answer" data-else="data-else">
+                <p class="final_answer" data-else>
                     <code><var>NUMBER</var></code> is een oneven getal dus het is niet deelbaar door <code>2</code>.
                 </p>
             </div>
@@ -78,7 +79,8 @@
                         Een getal is deelbaar door <code><var>FACTOR</var></code>
                         als de som van zijn cijfers deelbaar is door
                         <code><var>FACTOR</var></code>.
-                        [<a href="#" class="show-subhint" data-subhint="explain-three">Why?</a>]
+                        [<a href="#" class="show-subhint"
+                        data-subhint="explain-three">Why?</a>]
                     </p>
                     <div class="subhint" id="explain-three">
                         <p>
@@ -170,7 +172,7 @@
                     <code>\blue{<var>NUMBER</var>}</code>
                     ook deelbaar door <code><var>FACTOR</var></code>.
                 </p>
-                <p class="final_answer" data-else="data-else">
+                <p class="final_answer" data-else>
                     <code><var>_.last(STEPS).sum</var></code> is niet deelbaar door
                     <code><var>FACTOR</var></code> daarom is
                     <code>\blue{<var>NUMBER</var>}</code>
@@ -189,7 +191,8 @@
                     <p>
                         Een getal is deelbaar door <code>4</code> als de 
                         laatste twee cijfers ook deelbaar zijn door <code>4</code>.
-                        [<a href="#" class="show-subhint" data-subhint="explain-four">Why?</a>]
+                        [<a href="#" class="show-subhint"
+                        data-subhint="explain-four">Why?</a>]
                     </p>
                     <div class="subhint" id="explain-four">
                         <p>
@@ -228,7 +231,7 @@
                     <code><var>NUMBER</var></code> is dan ook deelbaar door
                     <code>4</code>.
                 </p>
-                <p class="final_answer" data-else="data-else">
+                <p class="final_answer" data-else>
                     Nee, <code><var>NUMBER % 100</var></code> is niet
                     deelbaar door <code>4</code> dus
                     <code><var>NUMBER</var></code> is dan ook niet deelbaar door
@@ -253,7 +256,7 @@
                     <code><var>NUMBER</var></code> is deelbaar door
                     <code>5</code>.
                 </p>
-                <p class="final_answer" data-else="data-else">
+                <p class="final_answer" data-else>
                     Het laatste cijfer van <code><var>NUMBER</var></code> is een
                     <code><var>NUMBER % 10</var></code> dus
                     <code><var>NUMBER</var></code> is niet deelbaar door
@@ -283,7 +286,7 @@
                     <code><var>NUMBER</var></code> is deelbaar door
                     <code>10</code>.
                 </p>
-                <p class="final_answer" data-else="data-else">
+                <p class="final_answer" data-else>
                     Het laatste cijfer van <code><var>NUMBER</var></code> is een
                     <code><var>NUMBER % 10</var></code> dus
                     <code><var>NUMBER</var></code> is niet deelbaar door

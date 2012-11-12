@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math math-format">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8" />
     <title>Multiplying and dividing scientific notation</title>
     <script src="../khan-exercise.js"></script>
 </head>
@@ -44,7 +44,7 @@
                         <code>= <var>roundTo( 2, scientificMantissa( 3, NUMERATOR ) / scientificMantissa( 1, DENOMINATOR ) ).toFixed( 2 )</var>
                         \times 10^{<var>scientificExponent( NUMERATOR ) - scientificExponent( DENOMINATOR )</var>}</code>
                     </p>
-                    <div data-if="scientificExponent( QUOTIENT ) != scientificExponent( NUMERATOR ) - scientificExponent( DENOMINATOR )" data-unwrap="data-unwrap">
+                    <div data-if="scientificExponent( QUOTIENT ) != scientificExponent( NUMERATOR ) - scientificExponent( DENOMINATOR )" data-unwrap>
                         <p>
                             Om het antwoord in wetenschappelijke notatie te schrijven, moet het eerste getal tussen de <code>1</code> en de <code>10</code> zijn.
                             In dit geval moeten we de komma een getal naar links verplaatsen zonder de waarde van het antwoord te veranderen.
@@ -89,7 +89,7 @@
                         <code>= <var>roundTo( 1, scientificMantissa( 2, QUOTIENT ) * scientificMantissa( 1, DENOMINATOR ) ).toFixed( 1 )</var>
                         \times 10^{<var>scientificExponent( QUOTIENT ) + scientificExponent( DENOMINATOR )</var>}</code>
                     </p>
-                    <div data-if="scientificExponent( NUMERATOR ) != scientificExponent( QUOTIENT ) + scientificExponent( DENOMINATOR )" data-unwrap="data-unwrap">
+                    <div data-if="scientificExponent( NUMERATOR ) != scientificExponent( QUOTIENT ) + scientificExponent( DENOMINATOR )" data-unwrap>
                         <p>
                             Om het antwoord in wetenschappelijke notatie te schrijven, moet het eerste getal tussen de <code>1</code> en de <code>10</code> zijn.
                             In dit geval moeten we de komma een getal naar links verplaatsen zonder de waarde van het antwoord te veranderen.

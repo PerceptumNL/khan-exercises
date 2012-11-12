@@ -18,7 +18,7 @@
                 <var id="SEG_1">POINTS[ 0 ] + POINTS[ 1 ]</var>
                 <var id="SEG_2">POINTS[ 1 ] + POINTS[ 2 ]</var>
                 <var id="SEG_TOTAL">POINTS[ 0 ] + POINTS[ 2 ]</var>
-                <div data-ensure="data-ensure" coef_1="COEF_1" coef_2="COEF_2" const_1="CONST_1" const_2="CONST_2" total="TOTAL"> 0 ) &amp;&amp; ( CONST_2 !== 0 )"
+                <div data-ensure="( COEF_1 !== COEF_2 || CONST_1 !== CONST_2 ) && ( TOTAL > 0 ) && ( CONST_2 !== 0 )">
                     <var id="X">randRange( 1, 9 )</var>
                     <var id="COEF_1">randRangeNonZero( 2, 9 )</var>
                     <var id="CONST_1">randRangeNonZero( -9, 9 )</var>
@@ -73,15 +73,15 @@
                     <p>Los op voor <code class="hint_pink">x</code>:</p>
                     <p><code class="hint_pink">\qquad <var>expr([ "*", COEF_1 - COEF_2, "x" ])</var> = <var>CONST_2 - CONST_1</var></code></p>
                 </div>
-                <p 1="1" data-if="data-if" coef_1="COEF_1" -="-" coef_2="COEF_2"> 0.001" class="hint_pink"<code>\qquad x = <var>X</var></code></p>
+                <p data-if="abs( COEF_1 - COEF_2 - 1 ) > 0.001" class="hint_pink"><code>\qquad x = <var>X</var></code></p>
                 <div>
                     <p>
                         Vervang <code class="hint_pink"><var>X</var></code> voor <code class="hint_pink">x</code> in de gegeven formules voor
                         <code class="hint_blue"><var>SEG_1</var></code> en <code class="hint_green"><var>SEG_2</var></code>:
                     </p>
                     <p>
-                        <span class="lcol"><code class="hint_blue">\qquad <var>SEG_1</var> = <var>COEF_1</var> * </code><code class="hint_pink"><var>X</var></code><code class="hint_blue"> + <var>CONST_1</var></code></span>
-                        <span class="rcol"><code class="hint_green">\qquad <var>SEG_2</var> = <var>COEF_2</var> * </code><code class="hint_pink"><var>X</var></code><code class="hint_blue"> + <var>CONST_2</var></code></span>
+                        <span class="lcol"><code class="hint_blue">\qquad <var>SEG_1</var> = <var>COEF_1</var> * </code><code class= "hint_pink"><var>X</var></code><code class="hint_blue"> + <var>CONST_1</var></code></span>
+                        <span class="rcol"><code class="hint_green">\qquad <var>SEG_2</var> = <var>COEF_2</var> * </code><code class= "hint_pink"><var>X</var></code><code class="hint_blue"> + <var>CONST_2</var></code></span>
                     </p>
                 </div>
                 <p>
