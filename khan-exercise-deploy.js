@@ -278,11 +278,15 @@ var Khan = (function() {
 
     lastFocusedSolutionInput = null,
 
-    issueError = "Communication working. Please contact info@khanacademie.nl " +
-        "to report the issue manually." +
+    issueError = "Communication with GitHub isn't working. Please file " +
+        "the issue manually at <a href=\"" +
+        "http://github.com/Khan/khan-exercises/issues/new\">GitHub</a>. " +
         "Please reference exercise: " + exerciseId + ".",
     issueSuccess = function(url, title, suggestion) {
-        return ["Thank you for your feedback!"].join("");
+        return ["Thank you for your feedback! Your issue has been created and can be ",
+            "found at the following link:",
+            "<p><a id=\"issue-link\" href=\"", url, "\">", title, "</a>",
+            "<p>", suggestion, "</p>"].join("");
     },
     issueIntro = "Remember to check the hints and double check your math. All provided information will be public. Thanks for your help!",
 
@@ -2305,83 +2309,59 @@ var Khan = (function() {
             $("#issue-throbber").show();
 
             var dataObj = {
-                page: pretitle,
-                title: title,
-                ureport: body,
-                ucontact: email,
-                utype: type
+                title: pretitle + " - " + title,
+                body: body,
+                labels: labels
             };
 
             // we try to post ot github without a cross-domain request, but if we're
             // just running the exercises locally, then we can't help it and need
             // to fall back to jsonp.
-            $.post("/reportissue", dataObj, function(data, textStatus) {
-              if (textStatus == "success") {
-                // hide the form
-                $("#issue form").hide();
+            $.ajax({
 
-                // show status message
-                $("#issue-status").removeClass("error")
-                    .html(issueSuccess())
-                    .show();
-              } else {
-                 // show status message
-                 $("#issue-status").addClass("error")
-                     .html(issueError).show();
-            
-                 // enable the inputs
-                 formElements.attr("disabled", false);
-            
-                 // replace throbber with the cancel button
-                 $("#issue-cancel").show();
-                 $("#issue-throbber").hide();
-              }
+                url: (testMode ? "http://www.khanacademy.org/" : "/") + "githubpost",
+                type: testMode ? "GET" : "POST",
+                data: testMode ? {json: JSON.stringify(dataObj)} :
+                    JSON.stringify(dataObj),
+                contentType: testMode ? "application/x-www-form-urlencoded" : "application/json",
+                dataType: testMode ? "jsonp" : "json",
+                success: function(json) {
+
+                    var data = json.data || json;
+
+                    // hide the form
+                    $("#issue form").hide();
+
+                    // show status message
+                    $("#issue-status").removeClass("error")
+                        .html(issueSuccess(data.html_url, data.title, suggestion))
+                        .show();
+
+                    // reset the form elements
+                    formElements.attr("disabled", false)
+                        .not("input:submit").val("");
+
+                    // replace throbber with the cancel button
+                    $("#issue-cancel").show();
+                    $("#issue-throbber").hide();
+
+                },
+                // note this won't actually work in local jsonp-mode
+                error: function(json) {
+
+                    // show status message
+                    $("#issue-status").addClass("error")
+                        .html(issueError).show();
+
+                    // enable the inputs
+                    formElements.attr("disabled", false);
+
+                    // replace throbber with the cancel button
+                    $("#issue-cancel").show();
+                    $("#issue-throbber").hide();
+
+                }
             });
-//            $.ajax({
-//
-//                url: "/reportissue",
-//                type: testMode ? "GET" : "POST",
-//                data: testMode ? {json: JSON.stringify(dataObj)} :
-//                    JSON.stringify(dataObj),
-//                contentType: testMode ? "application/x-www-form-urlencoded" : "application/json",
-//                dataType: testMode ? "jsonp" : "json",
-//                success: function(json) {
-//
-//                    var data = json.data || json;
-//
-//                    // hide the form
-//                    $("#issue form").hide();
-//
-//                    // show status message
-//                    $("#issue-status").removeClass("error")
-//                        .html(issueSuccess(data.html_url, data.title, suggestion))
-//                        .show();
-//
-//                    // reset the form elements
-//                    formElements.attr("disabled", false)
-//                        .not("input:submit").val("");
-//
-//                    // replace throbber with the cancel button
-//                    $("#issue-cancel").show();
-//                    $("#issue-throbber").hide();
-//
-//                },
-//                // note this won't actually work in local jsonp-mode
-//                error: function(json) {
-//
-//                    // show status message
-//                    $("#issue-status").addClass("error")
-//                        .html(issueError).show();
-//
-//                    // enable the inputs
-//                    formElements.attr("disabled", false);
-//
-//                    // replace throbber with the cancel button
-//                    $("#issue-cancel").show();
-//                    $("#issue-throbber").hide();
-//
-//                }
-//            });
         });
 
         $("#warning-bar-close a").click(function(e) {
