@@ -352,7 +352,7 @@ var Khan = (function() {
 
         warnTimeout: function() {
             warn("Your internet might be too slow to see an exercise. Refresh the page " +
-                'or <a href="" id="warn-report">report a problem</a>.', false);
+                'or <a href="" id="warn-report">meld een probleem</a>.', false);
             $("#warn-report").click(function(e) {
                 e.preventDefault();
                 $("#report").click();
@@ -730,7 +730,7 @@ var Khan = (function() {
         },
 
         showSolutionButtonText: function() {
-            return hintsUsed ? "Show next step (" + hints.length + " left)" : "Show Solution";
+            return hintsUsed ? "Laat de volgende stap zien (" + hints.length + " over)" : "Laat de oplossing zien";
         }
 
     };
@@ -911,7 +911,7 @@ var Khan = (function() {
         $("#check-answer-button")
             .removeAttr("disabled")
             .removeClass("buttonDisabled")
-            .val("Check Answer");
+            .val("Check Antwoord");
     }
 
     function disableCheckAnswer() {
@@ -2181,7 +2181,7 @@ var Khan = (function() {
 
         // On an exercise page, replace the "Report a Problem" link with a button
         // to be more clear that it won't replace the current page.
-        $("<a>Report a Problem</a>")
+        $("<a>Meld een probleem</a>")
             .attr("id", "report").addClass("simple-button green")
             .replaceAll($(".footer-links #report"));
 
