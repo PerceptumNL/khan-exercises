@@ -1,7 +1,6 @@
 ({
 	"nl" : {
-		"hint1"		: 'Voor de vorige halte <var>plural("zat", "zaten", TOTAL)</var> er <var>plural(TOTAL, "persoon", "personen")</var> in de tram. '+
-					'<var>plural(NUM2, "persoon")</var> stapten bij de vorige halte uit.',
+		"hint1"		: 'Voor de vorige halte <var>plural("zat", "zaten", TOTAL)</var> er <var>plural(TOTAL, "persoon", "personen")</var> in de tram. '+'<var>plural(NUM2, "persoon")</var> stapten bij de vorige halte uit.',
 		"hint2"		: 'Hoeveel mensen zitten er nu nog in de tram?',
 		"hint3"		: 'Het aantal mensen dat nu nog in de tram zit is het verschil tussen het aantal dat in de tram zat en het aantal mensen dat bij de vorige halte uitstapte.',
 		"hint4"		: 'Het verschil is <code><var>TOTAL</var> - <var>NUM2</var></code> <var>plural("persoon")</var>.',
