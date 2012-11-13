@@ -22,6 +22,7 @@ var userProofDone;
 // knownEqualities is an object with key-value pairs corresponding to statement-justification pairs
 // of statements known in the course of proof to be equal
 var knownEqualities;
+var knownEqualitiesList;
 
 // finishedEqualities denotes all the equalities that should be known, and
 // the correct reasoning, at the end of the proof
@@ -53,6 +54,9 @@ var numHints;
 // it is not at the minimum depth
 var givenProbability;
 
+// used to animate the last true statement proven
+var animationObjects;
+
 function initProof(segs, angs, triangles, supplementaryAngs, altIntAngs, depth, givProb, toProveType) {
     userProofDone = false;
 
@@ -62,6 +66,7 @@ function initProof(segs, angs, triangles, supplementaryAngs, altIntAngs, depth, 
     finishedEqualitiesList = [];
 
     fixedTriangles = {};
+    knownEqualitiesList = [];
 
     SEGMENTS = segs;
     ANGLES = angs;
@@ -74,6 +79,8 @@ function initProof(segs, angs, triangles, supplementaryAngs, altIntAngs, depth, 
     numHints = 3;
 
     givenProbability = givProb;
+
+    animationObjects = [];
 
     //populate knownEqualities based on reflexivity
     for (var i = 0; i < SEGMENTS.length; i++) {
@@ -198,7 +205,7 @@ function verifyStatement() {
 
 function verifyStatementArgs(statement, reason, category) {
     if (userProofDone) {
-        return false;
+        //return false;
     }
     var toReturn = false;
     // verifying triangle congruence is a bit tricky: it will return true if the given triangles
@@ -240,6 +247,9 @@ function verifyStatementArgs(statement, reason, category) {
         else if (triangle1Permutation != triangle2Permutation) {
             return false;
         }
+        else if (eqIn([triangle1, triangle2], knownEqualities)){
+            return "that's already in the proof!";
+        }
         else {
             toReturn = checkTriangleCongruent(triangle1, triangle2, reason);
         }
@@ -260,7 +270,9 @@ function verifyStatementArgs(statement, reason, category) {
         if (ang1 == null || ang2 == null) {
             return "those angles aren't in this figure...";
         }
-
+        else if (eqIn([ang1, ang2], knownEqualities)){
+            return "that's already in the proof!";
+        }
         else {
             toReturn = checkAngEqual(ang1, ang2, reason);
         }
@@ -281,9 +293,16 @@ function verifyStatementArgs(statement, reason, category) {
         });
 
         if (seg1 == null || seg2 == null) {
-            return "those segments aren't in this figure";
+            return "those segments aren't in this figure...";
         }
-
+        else if(seg1.equals(seg2) && reason === "reflexive property"){
+            knownEqualities[[seg1, seg2]] = "reflexive property";
+            knownEqualitiesList.push([seg1, seg2]);
+            return true;
+        }
+        else if (eqIn([seg1, seg2], knownEqualities)){
+            return "that's already in the proof!";
+        }
         else {
             toReturn = checkSegEqual(seg1, seg2, reason);
         }
@@ -310,9 +329,9 @@ function isProofDone() {
 // give a hint as to the next statement which the user should try to prove
 function nextStatementHint() {
     var hintKeys = [];
-    // filter out all keys with value "same *" or "given"
+    // filter out all keys with value "same *" or "given," as well as those values already in the proof
     for (var eq in finishedEqualities) {
-        if (finishedEqualities[eq].substring(0, 4) != "Same" && finishedEqualities[eq] != "given") {
+        if (finishedEqualities[eq].substring(0, 4) != "Same" && finishedEqualities[eq] != "given" && !(eq in knownEqualities)) {
             hintKeys.push(eq);
         }
     }
@@ -334,9 +353,10 @@ function nextStatementHint() {
 
             var useToProve = checkTriangleForHint(triangle1, triangle2, knownEqualities);
             if (useToProve.length > 0) {
-                return "You know that " + prettifyEquality(useToProve[0][0] + "," + useToProve[0][1])
+                return ["You know that " + prettifyEquality(useToProve[0][0] + "," + useToProve[0][1])
                 + ", " + prettifyEquality(useToProve[1][0] + "," + useToProve[1][1])
-                + ", and " + prettifyEquality(useToProve[2][0] + "," + useToProve[2][1]) + ". What can you prove from this?";
+                + ", and " + prettifyEquality(useToProve[2][0] + "," + useToProve[2][1]) + ". What can you prove from this?", 
+                "A useful thing to prove here is " + prettifyEquality(triangle1 + "," + triangle2)];
             }
         }
 
@@ -350,7 +370,8 @@ function nextStatementHint() {
 
             var useToProve = checkSegForHint(seg1, seg2, knownEqualities);
             if (useToProve.length > 0) {
-                return "You know that " + prettifyEquality(useToProve[0] + "," + useToProve[1]) + ". What segments can you prove equal from this?";
+                return ["You know that " + prettifyEquality(useToProve[0] + "," + useToProve[1]) + ". What segments can you prove equal from this?",
+                "A useful thing to prove here is " + prettifyEquality(seg1 + "," + seg2)];
             }
         }
 
@@ -365,15 +386,17 @@ function nextStatementHint() {
 
             var useToProve = checkAngForHint(ang1, ang2, knownEqualities);
             if (useToProve.length > 0 && useToProve[0] instanceof Triang) {
-                return "You know that " + prettifyEquality(useToProve[0] + "," + useToProve[1]) + ". What angles can you prove equal from this?";
+                return ["You know that " + prettifyEquality(useToProve[0] + "," + useToProve[1]) + ". What angles can you prove equal from this?",
+                "A useful thing to prove here is " + prettifyEquality(ang1 + "," + ang2)];
             }
             else if (useToProve.length > 0) {
-                return "Try using " + useToProve + " to prove some useful pair of angles equal.";
+                return ["Try using " + useToProve + " to prove some useful pair of angles equal.",
+                 "A useful thing to prove here is " + prettifyEquality(ang1 + "," + ang2)];
             }
         }
 
     }
-    return "Sorry, no hint for now >:[";
+    return "Sorry, there seems to be a problem with the hint system. Please report this bug.";
 }
 
 
@@ -382,8 +405,9 @@ function nextStatementHint() {
 function outputFinishedProof() {
     var proofText = "<h3>Givens</h3>";
 
-    var unsortedKeyList = _.map(finishedEqualitiesList, function(key) { return key.toString(); });
-    var finishedKeys = sortEqualityList(unsortedKeyList.reverse(), finishedEqualities);
+    var unsortedKeyList = _.clone(finishedEqualitiesList);
+    var finishedKeysList = sortEqualityList(unsortedKeyList.reverse(), finishedEqualities);
+    var finishedKeys = _.map(finishedKeysList, function(key) { return key.toString(); });
 
     var possibleValids = [];
 
@@ -393,8 +417,7 @@ function outputFinishedProof() {
             numberGivens++;
         }
     });
-    numberGivens /= 2;
-    for (var i = 0; i < finishedKeys.length; i += 2) {
+    for (var i = 0; i < finishedKeys.length; i ++) {
         if (finishedEqualities[finishedKeys[i]].substring(0, 4) != "Same") {
             if (finishedEqualities[finishedKeys[i]] === "given") {
                 numberGivens--;
@@ -432,7 +455,8 @@ function outputFinishedProof() {
 function outputKnownProof() {
     var proofText = "<h3>Givens</h3>";
 
-    var knownKeys = sortEqualityList(_.keys(knownEqualities), knownEqualities);
+    var knownKeysList = sortEqualityList(knownEqualitiesList, knownEqualities);
+    var knownKeys = _.map(knownKeysList, function(key){ return key.toString(); });
 
     var numberGivens = 0;
     _.each(knownKeys, function(key) {
@@ -440,8 +464,8 @@ function outputKnownProof() {
             numberGivens++;
         }
     });
-    numberGivens /= 2;
-    for (var i = 0; i < knownKeys.length; i += 2) {
+
+    for (var i = 0; i < knownKeys.length; i ++) {
         if (knownEqualities[knownKeys[i]].substring(0, 4) != "Same") {
             if (knownEqualities[knownKeys[i]] === "given") {
                 numberGivens--;
@@ -472,11 +496,15 @@ function outputKnownProof() {
 
 // returns a proof with a few blanks, blank statement fields will be wrapped by a div with id formatted according to divName
 function outputFillBlanksProof() {
+    var reasonCodes = {"SSS" : 0, "ASA" : 1, "SAS" : 2, "AAS" : 3, "corresponding parts of congruent triangles are congruent" : 4,
+     "vertical angles are equal" : 5, "alternate interior angles are equal" : 6};
     var proofText = "<h3>Givens</h3>";
     var blanks = 0;
+    var blankStatements = 0;
 
-    var unsortedKeyList = _.map(finishedEqualitiesList, function(key) { return key.toString(); });
-    var finishedKeys = sortEqualityList(unsortedKeyList.reverse(), finishedEqualities);
+    var unsortedKeyList = _.clone(finishedEqualitiesList);
+    var finishedKeysList = sortEqualityList(unsortedKeyList.reverse(), finishedEqualities);
+    var finishedKeys = _.map(finishedKeysList, function(key) { return key.toString(); });
 
     var numberGivens = 0;
     _.each(finishedKeys, function(key) {
@@ -484,13 +512,19 @@ function outputFillBlanksProof() {
             numberGivens++;
         }
     });
-    numberGivens /= 2;
 
-    for (var i = 0; i < finishedKeys.length; i += 2) {
+    var newEqualities = {};
+
+    for (var i = 0; i < finishedKeys.length; i++) {
         if (finishedEqualities[finishedKeys[i]].substring(0, 4) != "Same") {
             if (finishedEqualities[finishedKeys[i]] === "given") {
                 numberGivens--;
-                proofText += "<div style=\"float:left\" class=\"" + divName(finishedKeys[i]) + "\">";
+                if(i % 3 != 2){
+                    proofText += "<div style=\"float:left\" class=\"" + divName(finishedKeys[i]) + "\">";
+                } 
+                else{
+                    proofText += "<div style=\"float:left\" class=\"" + divName(finishedKeys[i]) + "\">";
+                }
                 proofText += prettifyEquality(finishedKeys[i]);
                 if (numberGivens > 1) {
                     proofText += "<code>, \\ </code> </div>";
@@ -501,14 +535,14 @@ function outputFillBlanksProof() {
                 else {
                     proofText += "</div><br><br><h3 style=\"clear:both\">Proof</h3>";
                 }
-                knownEqualities[finishedKeys[i]] = "given";
+                newEqualities[finishedKeys[i]] = "given";
                 //knownEqualities[finishedKeys[i].reverse()] = "given";
             }
             else {
                 if (KhanUtil.random() < 0.2) {
                     proofText += "<div class=\"" + divName(finishedKeys[i]) + "\">";
                     proofText += prettifyEquality(finishedKeys[i]);
-                    proofText += " because <select class=\"missing missingReason\" id=\"" + finishedEqualities[finishedKeys[i]] + "\">"
+                    proofText += " because <select class=\"missing missingReason\" id=\"" + finishedKeys[i] + "\">"
                     + "<option></option>"
                     + "<option value=\"SSS\">side-side-side congruence</option>"
                     + "<option value=\"ASA\">angle-side-angle congruence</option>"
@@ -538,12 +572,13 @@ function outputFillBlanksProof() {
                     }
                     proofText += " because " + finishedEqualities[finishedKeys[i]] + "</div><br>";
                     blanks++;
+                    blankStatements++;
                 }
                 else {
                     proofText += "<div class=\"" + divName(finishedKeys[i]) + "\">";
                     proofText += prettifyEquality(finishedKeys[i]);
                     proofText += " because " + finishedEqualities[finishedKeys[i]] + "</div>" + "<br>";
-                    knownEqualities[finishedKeys[i]] = finishedEqualities[finishedKeys[i]];
+                    newEqualities[finishedKeys[i]] = finishedEqualities[finishedKeys[i]];
                     // knownEqualities[finishedKeys[i].reverse()] = finishedEqualities[finishedKeys[i]];
                 }
             }
@@ -551,9 +586,11 @@ function outputFillBlanksProof() {
 
     }
 
-    if (blanks < 2) {
+    if (blanks < 2 || blankStatements < 1) {
         return outputFillBlanksProof();
     }
+
+    knownEqualities = _.extend(knownEqualities, newEqualities);
 
     return [proofText, blanks];
 
@@ -563,12 +600,14 @@ function outputFillBlanksProof() {
 // div correspond to that div name, for use in "fill-in-the-blank" proofs
 // returns true if the statements were filled in correctly, false otherwise
 function checkFillBlanksStatement(divID) {
-    var unsortedKeyList = _.map(finishedEqualitiesList, function(key) { return _.clone(key); });
+    // for now, hardcode these
+    var equivAngles = {"ADE" : "BDE", "BDF" : "BDE", "ADF" : "BDE", "BAF" : "BAC", "DAC" : "BAC", "DAF" : "BAC", "CFD" : "CFE", "AFE" : "CFE", "AFD" : "CFE"};
+    var unsortedKeyList = _.clone(finishedEqualitiesList);
     var finishedKeys = sortEqualityList(unsortedKeyList.reverse(), finishedEqualities);
 
     var components = divID.split("-");
-    var input1 = $($("#" + divID + " input")[0]).val();
-    var input2 = $($("#" + divID + " input")[1]).val();
+    var input1 = $($("#" + divID + " input")[0]).val().toUpperCase();
+    var input2 = $($("#" + divID + " input")[1]).val().toUpperCase();
 
     //triangles
     if (components[0] === "t") {
@@ -586,6 +625,8 @@ function checkFillBlanksStatement(divID) {
 
         if ((inputTriangle1.equals(triangle1) && inputTriangle2.equals(triangle2))
             || (inputTriangle1.equals(triangle2) && inputTriangle2.equals(triangle1))) {
+            knownEqualities[[triangle1, triangle2]] = "given";
+            knownEqualities[[triangle2, triangle1]] = "given";
             $("#" + divID + " input").remove();
             $("#" + divID + " code").remove();
             $("#" + divID + " span").remove();
@@ -605,10 +646,19 @@ function checkFillBlanksStatement(divID) {
             return;
         }
 
+        if(input1 in equivAngles){
+            input1 = equivAngles[input1];
+        }
+        if(input2 in equivAngles){
+            input2 = equivAngles[input2];
+        }
+
         var inputAngle1 = new Ang(input1[0], input1[1], input1[2]);
         var inputAngle2 = new Ang(input2[0], input2[1], input2[2]);
 
         if ((inputAngle1.equals(angle1) && inputAngle2.equals(angle2)) || (inputAngle1.equals(angle2) && inputAngle2.equals(angle1))) {
+            knownEqualities[[angle1, angle2]] = "given";
+            knownEqualities[[angle2, angle1]] = "given";
             $("#" + divID + " input").remove();
             $("#" + divID + " code").remove();
             $("#" + divID + " span").remove();
@@ -632,6 +682,8 @@ function checkFillBlanksStatement(divID) {
         var inputSeg2 = new Seg(input2[0], input2[1]);
 
         if ((inputSeg1.equals(seg1) && inputSeg2.equals(seg2)) || (inputSeg1.equals(seg2) && inputSeg2.equals(seg1))) {
+            knownEqualities[[seg1, seg2]] = "given";
+            knownEqualities[[seg2, seg1]] = "given";
             $("#" + divID + " input").remove();
             $("#" + divID + " code").remove();
             $("#" + divID + " span").remove();
@@ -649,72 +701,89 @@ function checkFillBlanksStatement(divID) {
 // selected is equal to the id
 // returns true if the reason was filled in correctly, false otherwise
 function checkFillBlanksReason(select, selectID) {
-    if (selectID === select.val()) {
+    if (verifyStatementArgs(selectID.split(",")[0].substring(8,11) + "=" + selectID.split(",")[1].substring(8,11), select.val(), "triangle congruence") === true
+        || verifyStatementArgs(selectID.split(",")[0].substring(3,6) + "=" + selectID.split(",")[1].substring(3,6), select.val(), "angle equality") === true
+        || verifyStatementArgs(selectID.split(",")[0].substring(3,5) + "=" + selectID.split(",")[1].substring(3,5), select.val(), "segment equality") === true) {
         var parent = $(select.parent());
         select.remove();
-        parent.append(selectID);
+        parent.append(select.val());
         return true;
     }
     return false;
 }
 
 // for fill-in-the-blanks proofs, this hint function looks for the next missing reason, and generate a hint based
-// on that using nextStatementHint()
+// on that
 function getFillBlanksHint(giveAway) {
-    var unsortedKeyList = _.map(finishedEqualitiesList, function(key) { return _.clone(key); });
+    var unsortedKeyList = _.clone(finishedEqualitiesList);
     var finishedKeys = sortEqualityList(unsortedKeyList.reverse(), finishedEqualities);
 
     if (!giveAway) {
-        if ($(".missing").length === 0) {
+        var firstMissing = $(".missing").first();
+        // if the next open spot is a statement
+        if (!firstMissing.hasClass("missingReason")) {
+            var components = firstMissing[0].id.split("-");
+
+            //only use equalities before the input
+            finishedKeys = finishedKeys.slice(0, (Number(components[1]) + 1));
+            var beforeEqualities = {};
+            for (var i = 0; i < finishedKeys.length; i++) {
+                beforeEqualities[finishedKeys[i]] = finishedEqualities[finishedKeys[i]];
+            }
+            for (var i = 0; i < SEGMENTS.length; i++) {
+                beforeEqualities[[SEGMENTS[i], SEGMENTS[i]]] = "Same segment";
+            }
+
+            for (var i = 0; i < ANGLES.length; i++) {
+                beforeEqualities[[ANGLES[i], ANGLES[i]]] = "Same angle";
+            }
+
+            for (var i = 0; i < TRIANGLES.length; i++) {
+                beforeEqualities[[TRIANGLES[i], TRIANGLES[i]]] = "Same triangle";
+            }
+
+            if (components[0] === "t") {
+                var triangle1 = finishedKeys[components[1]][0];
+                var triangle2 = finishedKeys[components[1]][1];
+
+                var useToProve = checkTriangleForHint(triangle1, triangle2, beforeEqualities);
+                if (useToProve.length > 0) {
+                    return "You know that " + prettifyEquality(useToProve[0][0] + "," + useToProve[0][1])
+                    + ", " + prettifyEquality(useToProve[1][0] + "," + useToProve[1][1])
+                    + ", and " + prettifyEquality(useToProve[2][0] + "," + useToProve[2][1]) + ". What can you prove from this?";
+                }
+            }
+            else if (components[0] === "a") {
+                var angle1 = finishedKeys[components[1]][0];
+                var angle2 = finishedKeys[components[1]][1];
+
+                var useToProve = checkAngForHint(angle1, angle2, beforeEqualities);
+                if (useToProve.length > 0 && useToProve[0] instanceof Triang) {
+                    return "You know that " + prettifyEquality(useToProve[0] + "," + useToProve[1]) + ". What angles can you prove equal from this?";
+                }
+                else if (useToProve.length > 0) {
+                    return "Try using " + useToProve + " to prove some useful pair of angles equal.";
+                }
+            }
+            else {
+                var seg1 = finishedKeys[components[1]][0];
+                var seg2 = finishedKeys[components[1]][1];
+
+                var useToProve = checkSegForHint(seg1, seg2, beforeEqualities);
+                if (useToProve.length > 0) {
+                    return "You know that " + prettifyEquality(useToProve[0] + "," + useToProve[1]) + ". What segments can you prove equal from this?";
+                }
+            }
         }
-        else {
-            var firstMissing = $(".missing").first();
-            // if the next open spots are statements, not justifications
-            if (firstMissing.children().length > 0) {
-                var inputs = _.filter(firstMissing.children(), function(child) {
-                    return $(child).hasClass("missingStatement");
-                });
-                var components = firstMissing[0].id.split("-");
-
-                //only use equalities before the input
-                finishedKeys = finishedKeys.slice(0, (Number(components[1]) + 1));
-                var beforeEqualities = {};
-                for (var i = 0; i < finishedKeys.length; i++) {
-                    beforeEqualities[finishedKeys[i]] = finishedEqualities[finishedKeys[i]];
-                }
-
-                if (components[0] === "t") {
-                    var triangle1 = finishedKeys[components[1]][0];
-                    var triangle2 = finishedKeys[components[1]][1];
-
-                    var useToProve = checkTriangleForHint(triangle1, triangle2, beforeEqualities);
-                    if (useToProve.length > 0) {
-                        return "You know that " + prettifyEquality(useToProve[0][0] + "," + useToProve[0][1])
-                        + ", " + prettifyEquality(useToProve[1][0] + "," + useToProve[1][1])
-                        + ", and " + prettifyEquality(useToProve[2][0] + "," + useToProve[2][1]) + ". What can you prove from this?";
-                    }
-                }
-                else if (components[0] === "a") {
-                    var angle1 = finishedKeys[components[1]][0];
-                    var angle2 = finishedKeys[components[1]][1];
-
-                    var useToProve = checkAngForHint(angle1, angle2, beforeEqualities);
-                    if (useToProve.length > 0 && useToProve[0] instanceof Triang) {
-                        return "You know that " + prettifyEquality(useToProve[0] + "," + useToProve[1]) + ". What angles can you prove equal from this?";
-                    }
-                    else if (useToProve.length > 0) {
-                        return "Try using " + useToProve + " to prove some useful pair of angles equal.";
-                    }
-                }
-                else {
-                    var seg1 = finishedKeys[components[1]][0];
-                    var seg2 = finishedKeys[components[1]][1];
-
-                    var useToProve = checkSegForHint(seg1, seg2, beforeEqualities);
-                    if (useToProve.length > 0) {
-                        return "You know that " + prettifyEquality(useToProve[0] + "," + useToProve[1]) + ". What segments can you prove equal from this?";
-                    }
-                }
+        // if the next open spot is a justification
+        else{
+            if(firstMissing[0].id[0] === "t"){
+                return "You know that triangles are congruent because segments or angles in them are congruent. What segments or angles do you know "
+                + "are equal? Which can you use?";
+            }
+            else{
+                return "Is this segment/angle pair part of a pair of congruent triangles? If not, there are only two other reasons they could be equal "
+                + "(in this exercise).";
             }
         }
     }
@@ -724,16 +793,14 @@ function getFillBlanksHint(giveAway) {
         else {
             var firstMissing = $(".missing").first();
             // if the next open spots are statements, not justifications
-            if (firstMissing.children().length > 0) {
-                var inputs = _.filter(firstMissing.children(), function(child) {
-                    return $(child).hasClass("missingStatement");
-                });
+            if (!firstMissing.hasClass("missingReason")) {
                 var components = firstMissing[0].id.split("-");
                 firstMissing.removeClass("missing");
-                return prettifyEquality([finishedKeys[components[1]][0], finishedKeys[components[1]][1]]);
+                return "The next equality you have to fill in is " + prettifyEquality([finishedKeys[components[1]][0], finishedKeys[components[1]][1]]);
             }
             else {
-
+                firstMissing.removeClass("missing");
+                return "The next equality with a missing reason is true by " + finishedEqualities[firstMissing[0].id];
             }
         }
     }
@@ -878,7 +945,7 @@ function outputBadProof() {
 
     // now construct the proof we want to hand to the exercise
     var proofText = "<h3>Givens</h3>";
-    var knownKeys = sortEqualityList(_.keys(knownEqualities), knownEqualities);
+    var knownKeys = sortEqualityStringList(_.keys(knownEqualities), knownEqualities);
 
     var numberGivens = 0;
     _.each(knownKeys, function(key) {
@@ -1061,6 +1128,8 @@ function traceBack(statementKey, depth) {
         finishedEqualities[statementKey.reverse()] = "given";
         finishedEqualitiesList.push(statementKey);
         finishedEqualitiesList.push(statementKey.reverse());
+        knownEqualitiesList.push(statementKey);
+        knownEqualitiesList.push(statementKey.reverse());
 
         if (statementKey[0] instanceof Triang) {
             fixedTriangles[statementKey[0]] = true;
@@ -1408,6 +1477,8 @@ function traceBack(statementKey, depth) {
                 finishedEqualities[statementKey.reverse()] = "given";
                 finishedEqualitiesList.push(statementKey);
                 finishedEqualitiesList.push(statementKey.reverse());
+                knownEqualitiesList.push(statementKey);
+                knownEqualitiesList.push(statementKey.reverse());
             }
             // otherwise, change the labeling on the triangle so that the segments given in the
             // statement key are corresponding
@@ -1415,7 +1486,7 @@ function traceBack(statementKey, depth) {
                 var trianglePair = newTriangles[KhanUtil.randRange(0, newTriangles.length - 1)];
 
                 // there has to be a better way of doing this
-                // _indexOf doesn't work (because of === issues?)
+                // _.indexOf doesn't work (because of === issues?)
                 var index1;
                 for (var i = 0; i < trianglePair[0].segs.length; i++) {
                     if (trianglePair[0].segs[i].equals(seg1)) {
@@ -1480,6 +1551,8 @@ function traceBack(statementKey, depth) {
                 finishedEqualities[statementKey.reverse()] = "given";
                 finishedEqualitiesList.push(statementKey);
                 finishedEqualitiesList.push(statementKey.reverse());
+                knownEqualitiesList.push(statementKey);
+                knownEqualitiesList.push(statementKey.reverse());
             }
             // otherwise, change the labeling on the triangle so that the angles given in the
             // statement key are corresponding
@@ -1552,6 +1625,8 @@ function setGivenOrTraceBack(keys, reason, oldKey, dep) {
                 finishedEqualities[key.reverse()] = "given";
                 finishedEqualitiesList.push(key);
                 finishedEqualitiesList.push(key.reverse());
+                knownEqualitiesList.push(key);
+                knownEqualitiesList.push(key.reverse());
 
                 if (key[0] instanceof Triang) {
                     fixedTriangles[key[0]] = true;
@@ -1570,6 +1645,8 @@ function setGivenOrTraceBack(keys, reason, oldKey, dep) {
             finishedEqualities[oldKey.reverse()] = "given";
             finishedEqualitiesList.push(oldKey);
             finishedEqualitiesList.push(oldKey.reverse());
+            knownEqualitiesList.push(oldKey);
+            knownEqualitiesList.push(oldKey.reverse());
 
             if (oldKey[0] instanceof Triang) {
                 fixedTriangles[oldKey[0]] = true;
@@ -1679,6 +1756,8 @@ function checkTriangleCongruent(triangle1, triangle2, reason) {
         if (reason === "SSS") {
             knownEqualities[[triangle1, triangle2]] = "SSS";
             knownEqualities[[triangle2, triangle1]] = "SSS";
+            knownEqualitiesList.push([triangle1, triangle2]);
+            animationObjects = [[triangle1.segs[0], triangle2.segs[0]],[triangle1.segs[1], triangle2.segs[1]],[triangle1.segs[2], triangle2.segs[2]]];
             return true;
         }
     }
@@ -1692,6 +1771,9 @@ function checkTriangleCongruent(triangle1, triangle2, reason) {
             if (reason === "ASA") {
                 knownEqualities[[triangle1, triangle2]] = "ASA";
                 knownEqualities[[triangle2, triangle1]] = "ASA";
+                knownEqualitiesList.push([triangle1, triangle2]);
+                animationObjects = [[triangle1.angs[i], triangle2.angs[i]],[triangle1.segs[(i + 1) % 3], triangle2.segs[(i + 1) % 3]],
+                                    [triangle1.angs[(i + 1) % 3], triangle2.angs[(i + 1) % 3]]];
                 return true;
             }
         }
@@ -1705,6 +1787,9 @@ function checkTriangleCongruent(triangle1, triangle2, reason) {
             if (reason === "SAS") {
                 knownEqualities[[triangle1, triangle2]] = "SAS";
                 knownEqualities[[triangle2, triangle1]] = "SAS";
+                knownEqualitiesList.push([triangle1, triangle2]);
+                animationObjects = [[triangle1.segs[i], triangle2.segs[i]], [triangle1.angs[i], triangle2.angs[i]],
+                                    [triangle1.segs[(i + 1) % 3], triangle2.segs[(i + 1) % 3]]];
                 return true;
             }
         }
@@ -1720,6 +1805,9 @@ function checkTriangleCongruent(triangle1, triangle2, reason) {
             if (reason === "AAS") {
                 knownEqualities[[triangle1, triangle2]] = "AAS";
                 knownEqualities[[triangle2, triangle1]] = "AAS";
+                knownEqualitiesList.push([triangle1, triangle2]);
+                animationObjects = [[triangle1.angs[i], triangle2.angs[i]], [triangle1.angs[(i + 1) % 3], triangle2.angs[(i + 1) % 3]],
+                                    [triangle1.segs[(i + 2) % 3], triangle2.segs[(i + 2) % 3]]];
                 return true;
             }
         }
@@ -1734,6 +1822,9 @@ function checkTriangleCongruent(triangle1, triangle2, reason) {
             if (reason === "AAS") {
                 knownEqualities[[triangle1, triangle2]] = "AAS";
                 knownEqualities[[triangle2, triangle1]] = "AAS";
+                knownEqualitiesList.push([triangle1, triangle2]);
+                animationObjects = [[triangle1.angs[i], triangle2.angs[i]], [triangle1.angs[(i + 1) % 3], triangle2.angs[(i + 1) % 3]],
+                                    [triangle1.segs[i], triangle2.segs[i]]]
                 return true;
             }
         }
@@ -1762,9 +1853,10 @@ function checkSegEqual(seg1, seg2, reason) {
             if (checkTriangleCongruent(seg1.triangles[i][0], seg2.triangles[j][0])
                 && _.indexOf(seg1.triangles[i][0].segs, seg1) === _.indexOf(seg2.triangles[j][0].segs, seg2)) {
 
-                if (reason === "CPCTC") {
+                if (reason === "CPCTC" || reason === "corresponding parts of congruent triangles are congruent") {
                     knownEqualities[[seg1, seg2]] = "corresponding parts of congruent triangles are congruent";
                     knownEqualities[[seg2, seg1]] = "corresponding parts of congruent triangles are congruent";
+                    knownEqualitiesList.push([seg1, seg2]);
                     return true;
                 }
             }
@@ -1790,9 +1882,10 @@ function checkAngEqual(ang1, ang2, reason) {
             if (checkTriangleCongruent(ang1.triangles[i][0], ang2.triangles[j][0])
                 && _.indexOf(ang1.triangles[i][0].angs, ang1) === _.indexOf(ang2.triangles[j][0].angs, ang2)) {
 
-                if (reason === "CPCTC") {
+                if (reason === "CPCTC" || reason === "corresponding parts of congruent triangles are congruent") {
                     knownEqualities[[ang1, ang2]] = "corresponding parts of congruent triangles are congruent";
                     knownEqualities[[ang2, ang1]] = "corresponding parts of congruent triangles are congruent";
+                    knownEqualitiesList.push([ang1, ang2]);
                     return true;
                 }
             }
@@ -1816,9 +1909,10 @@ function checkAngEqual(ang1, ang2, reason) {
         }
 
         if (sharedLines === 4) {
-            if (reason === "vertical angles") {
+            if (reason === "vertical angles" || reason === "vertical angles are equal") {
                 knownEqualities[[ang1, ang2]] = "vertical angles are equal";
                 knownEqualities[[ang2, ang1]] = "vertical angles are equal";
+                knownEqualitiesList.push([ang1, ang2]);
                 return true;
             }
         }
@@ -1826,9 +1920,10 @@ function checkAngEqual(ang1, ang2, reason) {
 
     if (eqIn([ang1, ang2], altInteriorAngs) || eqIn([ang2, ang1], altInteriorAngs)) {
 
-        if (reason === "alternate angles") {
+        if (reason === "alternate angles" || reason === "alternate interior angles are equal") {
             knownEqualities[[ang1, ang2]] = "alternate interior angles are equal";
             knownEqualities[[ang2, ang1]] = "alternate interior angles are equal";
+            knownEqualitiesList.push([ang1, ang2]);
             return true;
         }
     }
@@ -1890,7 +1985,7 @@ function checkTriangleForHint(triangle1, triangle2, equalityObject) {
             && eqIn([triangle1.angs[(i + 1) % 3], triangle2.angs[(i + 1) % 3]], equalityObject)
             && eqIn([triangle1.segs[(i + 2) % 3], triangle2.segs[(i + 2) % 3]], equalityObject)) {
             return [[triangle1.angs[i], triangle2.angs[i]],
-             [triangle1.segs[(i + 2) % 3], triangle2.segs[(i + 2) % 3]], [triangle1.segs[(i + 2) % 3], triangle2.segs[(i + 2) % 3]]];
+             [triangle1.angs[(i + 1) % 3], triangle2.angs[(i + 1) % 3]], [triangle1.segs[(i + 2) % 3], triangle2.segs[(i + 2) % 3]]];
         }
     }
 
@@ -1916,13 +2011,27 @@ function checkSegForHint(seg1, seg2, equalityObject) {
     //     return [];
     // }
 
-
     for (var i = 0; i < seg1.triangles.length; i++) {
         for (var j = 0; j < seg2.triangles.length; j++) {
+            var index1;
+            for (var k = 0; k < seg1.triangles[i][0].segs.length; k++) {
+                if (seg1.triangles[i][0].segs[k].equals(seg1)) {
+                    index1 = k;
+                }
+            }
+
+            var index2;
+            for (var k = 0; k < seg2.triangles[j][0].segs.length; k++) {
+                if (seg2.triangles[j][0].segs[k].equals(seg2)) {
+                    index2 = k;
+                }
+            }
+
             // if the segments' corresponding triangles are congruent AND they're the same part of those triangles, we add
             // to the known equalities
             if (eqIn([seg1.triangles[i][0], seg2.triangles[j][0]], equalityObject)
-                && _.indexOf(seg1, seg1.triangles[i][0].segs) === _.indexOf(seg2, seg2.triangles[j][0].segs)) {
+                && index1 === index2) {
+
                 return [seg1.triangles[i][0], seg2.triangles[j][0]];
             }
         }
@@ -1941,8 +2050,23 @@ function checkAngForHint(ang1, ang2, equalityObject) {
     // to the known
     for (var i = 0; i < ang1.triangles.length; i++) {
         for (var j = 0; j < ang2.triangles.length; j++) {
+
+            var index1;
+            for (var k = 0; k < ang1.triangles[i][0].angs.length; k++) {
+                if (ang1.triangles[i][0].angs[k].equals(ang1)) {
+                    index1 = k;
+                }
+            }
+
+            var index2;
+            for (var k = 0; k < ang2.triangles[j][0].angs.length; k++) {
+                if (ang2.triangles[j][0].angs[k].equals(ang2)) {
+                    index2 = k;
+                }
+            }
+
             if (eqIn([ang1.triangles[i][0], ang2.triangles[j][0]], equalityObject)
-                && _.indexOf(ang1, ang1.triangles[i][0].angs) === _.indexOf(ang2, ang2.triangles[j][0].angs)) {
+                && index1 === index2) {
                 return [ang1.triangles[i][0], ang2.triangles[j][0]];
             }
         }
@@ -1966,12 +2090,12 @@ function checkAngForHint(ang1, ang2, equalityObject) {
         }
 
         if (sharedLines === 4) {
-            return "Vertical angles";
+            return "vertical angles";
         }
     }
 
     if (eqIn([ang1, ang2], altInteriorAngs) || eqIn([ang2, ang1], altInteriorAngs)) {
-        return "Alternate interior angles";
+        return "alternate interior angles";
     }
 
 
@@ -2047,9 +2171,9 @@ function divName(equalityString) {
             return _.difference(equalityString.substring(12, 23).split(""), triang.toString().split("")).length === 0;
         });
 
-        return triangle1.segs[0].toString().substring(3, 5) + "-" + triangle1.segs[1].toString().substring(3, 5) + "-"
-        + triangle1.segs[2].toString().substring(3, 5) + "-" + triangle2.segs[0].toString().substring(3, 5) + "-"
-        + triangle2.segs[1].toString().substring(3, 5) + "-" + triangle2.segs[2].toString().substring(3, 5);
+        return triangle1.segs[0].toString().substring(3, 5) + " " + triangle1.segs[1].toString().substring(3, 5) + " "
+        + triangle1.segs[2].toString().substring(3, 5) + " " + triangle2.segs[0].toString().substring(3, 5) + "2 "
+        + triangle2.segs[1].toString().substring(3, 5) + "2 " + triangle2.segs[2].toString().substring(3, 5) + "2";
     }
 }
 
@@ -2069,6 +2193,35 @@ function triangIn(item, object) {
 // also, since we add the vertical angles and alternate angles before the triangles they prove, we need to move these
 // forward in the list
 function sortEqualityList(equalityList, equalityObject) {
+    var dupCheck = {};
+    var newEqualityList = [];
+    for (var i = 0; i < equalityList.length; i++) {
+        if (equalityObject[equalityList[i]] === "given" && !(equalityList[i] in dupCheck || equalityList[i].reverse() in dupCheck)) {
+            newEqualityList.unshift(equalityList[i]);
+            dupCheck[equalityList[i]] = true;
+        }
+        else if(!(equalityList[i] in dupCheck || equalityList[i].reverse() in dupCheck)) {
+            newEqualityList.push(equalityList[i]);
+            dupCheck[equalityList[i]] = true;
+        }
+    }
+    if(equalityObject === finishedEqualities) {
+        var sortedEqualityList = _.clone(newEqualityList);
+        for (var i = 0; i < newEqualityList.length; i++) {
+            if (equalityObject[newEqualityList[i]] === "vertical angles are equal" || equalityObject[newEqualityList[i]] === "alternate interior angles are equal") {
+                sortedEqualityList[i - 1] = newEqualityList[i];
+                sortedEqualityList[i] = newEqualityList[i - 1];
+            }
+        }
+    }
+    else{
+        var sortedEqualityList = newEqualityList;
+    }
+
+    return sortedEqualityList;
+}
+
+function sortEqualityStringList(equalityList, equalityObject) {
     var newEqualityList = [];
     for (var i = 0; i < equalityList.length; i++) {
         if (equalityObject[equalityList[i]] === "given") {
